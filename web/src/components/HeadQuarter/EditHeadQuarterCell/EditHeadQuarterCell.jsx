@@ -10,12 +10,8 @@ export const QUERY = gql`
     headQuarter: headQuarter(id: $id) {
       id
       name
-      body
-      image
       description
-      active
       createdAt
-      programOfStudyId
     }
   }
 `
@@ -27,12 +23,8 @@ const UPDATE_HEAD_QUARTER_MUTATION = gql`
     updateHeadQuarter(id: $id, input: $input) {
       id
       name
-      body
-      image
       description
-      active
       createdAt
-      programOfStudyId
     }
   }
 `

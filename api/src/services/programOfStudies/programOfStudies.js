@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-
-const db = new PrismaClient({ datasources: {  db: { url: "postgres://postgres:12345678@127.0.0.1:5432/ProgramsOfStudyDb" } } });
+import { db } from 'src/lib/db'
 
 export const programOfStudies = () => {
   return db.programOfStudy.findMany()

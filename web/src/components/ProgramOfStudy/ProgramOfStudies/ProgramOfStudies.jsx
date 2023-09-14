@@ -3,7 +3,12 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/ProgramOfStudy/ProgramOfStudiesCell'
-import { checkboxInputTag, timeTag, truncate } from 'src/lib/formatters'
+import {
+  checkboxInputTag,
+  formatEnum,
+  timeTag,
+  truncate,
+} from 'src/lib/formatters'
 
 const DELETE_PROGRAM_OF_STUDY_MUTATION = gql`
   mutation DeleteProgramOfStudyMutation($id: Int!) {
@@ -45,6 +50,8 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
             <th>Image</th>
             <th>Description</th>
             <th>Active</th>
+            <th>Program type</th>
+            <th>Carrer type</th>
             <th>Created at</th>
             <th>Head quarter id</th>
             <th>&nbsp;</th>
@@ -59,6 +66,8 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
               <td>{truncate(programOfStudy.image)}</td>
               <td>{truncate(programOfStudy.description)}</td>
               <td>{checkboxInputTag(programOfStudy.active)}</td>
+              <td>{formatEnum(programOfStudy.programType)}</td>
+              <td>{formatEnum(programOfStudy.carrerType)}</td>
               <td>{timeTag(programOfStudy.createdAt)}</td>
               <td>{truncate(programOfStudy.headQuarterId)}</td>
               <td>

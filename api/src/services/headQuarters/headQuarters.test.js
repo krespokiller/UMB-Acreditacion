@@ -27,17 +27,10 @@ describe('headQuarters', () => {
 
   scenario('creates a headQuarter', async () => {
     const result = await createHeadQuarter({
-      input: {
-        name: 'String',
-        body: 'String',
-        image: 'String',
-        description: 'String',
-      },
+      input: { name: 'String', description: 'String' },
     })
 
     expect(result.name).toEqual('String')
-    expect(result.body).toEqual('String')
-    expect(result.image).toEqual('String')
     expect(result.description).toEqual('String')
   })
 

@@ -6,9 +6,27 @@ export const schema = gql`
     image: String!
     description: String!
     active: Boolean!
+    programType: programType!
+    carrerType: carrerType!
     createdAt: DateTime!
     headQuarterId: Int
     headQuarter: HeadQuarter
+  }
+
+  enum programType {
+    PREGRADO
+    POSGRADO
+  }
+
+  enum carrerType {
+    TECNICO
+    TECNOLOGO
+    PROFESIONAL
+    ESPECIALIZACION_TECNICA
+    ESPECIALIZACION_TECNOLOGICA
+    ESPECIALIZACION_UNIVERSITARIA
+    MAESTRIA
+    DOCTORADO
   }
 
   type Query {
@@ -22,6 +40,8 @@ export const schema = gql`
     image: String!
     description: String!
     active: Boolean!
+    programType: programType!
+    carrerType: carrerType!
     headQuarterId: Int
   }
 
@@ -31,6 +51,8 @@ export const schema = gql`
     image: String
     description: String
     active: Boolean
+    programType: programType
+    carrerType: carrerType
     headQuarterId: Int
   }
 

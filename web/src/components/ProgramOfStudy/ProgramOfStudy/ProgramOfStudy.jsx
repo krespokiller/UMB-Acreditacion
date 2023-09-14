@@ -2,7 +2,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { checkboxInputTag, timeTag } from 'src/lib/formatters'
+import { checkboxInputTag, formatEnum, timeTag } from 'src/lib/formatters'
 
 const DELETE_PROGRAM_OF_STUDY_MUTATION = gql`
   mutation DeleteProgramOfStudyMutation($id: Int!) {
@@ -62,6 +62,14 @@ const ProgramOfStudy = ({ programOfStudy }) => {
             <tr>
               <th>Active</th>
               <td>{checkboxInputTag(programOfStudy.active)}</td>
+            </tr>
+            <tr>
+              <th>Program type</th>
+              <td>{formatEnum(programOfStudy.programType)}</td>
+            </tr>
+            <tr>
+              <th>Carrer type</th>
+              <td>{formatEnum(programOfStudy.carrerType)}</td>
             </tr>
             <tr>
               <th>Created at</th>

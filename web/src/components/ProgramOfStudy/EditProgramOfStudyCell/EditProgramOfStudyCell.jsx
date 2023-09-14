@@ -14,6 +14,8 @@ export const QUERY = gql`
       image
       description
       active
+      programType
+      carrerType
       createdAt
       headQuarterId
     }
@@ -31,6 +33,8 @@ const UPDATE_PROGRAM_OF_STUDY_MUTATION = gql`
       image
       description
       active
+      programType
+      carrerType
       createdAt
       headQuarterId
     }

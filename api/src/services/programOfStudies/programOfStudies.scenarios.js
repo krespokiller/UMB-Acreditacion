@@ -6,6 +6,8 @@ export const standard = defineScenario({
         body: 'String',
         image: 'String',
         description: 'String',
+        programType: 'PREGRADO',
+        carrerType: 'TECNICO',
       },
     },
     two: {
@@ -14,6 +16,8 @@ export const standard = defineScenario({
         body: 'String',
         image: 'String',
         description: 'String',
+        programType: 'PREGRADO',
+        carrerType: 'TECNICO',
       },
     },
   },

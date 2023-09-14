@@ -3,7 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/HeadQuarter/HeadQuartersCell'
-import { checkboxInputTag, timeTag, truncate } from 'src/lib/formatters'
+import { timeTag, truncate } from 'src/lib/formatters'
 
 const DELETE_HEAD_QUARTER_MUTATION = gql`
   mutation DeleteHeadQuarterMutation($id: Int!) {
@@ -41,12 +41,8 @@ const HeadQuartersList = ({ headQuarters }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Body</th>
-            <th>Image</th>
             <th>Description</th>
-            <th>Active</th>
             <th>Created at</th>
-            <th>Program of study id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -55,12 +51,8 @@ const HeadQuartersList = ({ headQuarters }) => {
             <tr key={headQuarter.id}>
               <td>{truncate(headQuarter.id)}</td>
               <td>{truncate(headQuarter.name)}</td>
-              <td>{truncate(headQuarter.body)}</td>
-              <td>{truncate(headQuarter.image)}</td>
               <td>{truncate(headQuarter.description)}</td>
-              <td>{checkboxInputTag(headQuarter.active)}</td>
               <td>{timeTag(headQuarter.createdAt)}</td>
-              <td>{truncate(headQuarter.programOfStudyId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

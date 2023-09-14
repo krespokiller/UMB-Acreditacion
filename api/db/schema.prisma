@@ -8,25 +8,41 @@ generator client {
   previewFeatures = ["fullTextSearch"]
   provider        = "prisma-client-js"
 }
+
 model ProgramOfStudy {
-  id        Int      @id @default(autoincrement())
-  name     String
-  body      String
-  image     String
-  description String
-  active    Boolean  @default(false)//require admin approval
-  createdAt DateTime @default(now())
-  headQuarterId Int?     @unique
-  headQuarter   HeadQuarter?
+  id            Int          @id @default(autoincrement())
+  name          String
+  body          String
+  image         String
+  description   String
+  active        Boolean      @default(false) //require admin approval
+  programType   programType
+  carrerType    carrerType
+  createdAt     DateTime     @default(now())
+  headQuarterId Int?         @unique
+  headQuarter   HeadQuarter? @relation(fields: [headQuarterId], references: [id])
 }
+
 model HeadQuarter {
-  id        Int      @id @default(autoincrement())
-  name     String
-  body      String
-  image     String
-  description String
-  active    Boolean  @default(false)//require admin approval
-  createdAt DateTime @default(now())
-  programOfStudyId Int?     @unique
-  programOfStudy   ProgramOfStudy? @relation(fields: [programOfStudyId], references: [id])
+  id              Int              @id @default(autoincrement())
+  name            String
+  description     String
+  createdAt       DateTime         @default(now())
+  programsOfStudy ProgramOfStudy[]
+}
+
+enum programType {
+  PREGRADO @map("PREGRADO")
+  POSGRADO @map("POSGRADO")
+}
+
+enum carrerType {
+  TECNICO                       @map("TECNICO")
+  TECNOLOGO                     @map("TECNOLOGO")
+  PROFESIONAL                   @map("PROFESIONAL")
+  ESPECIALIZACION_TECNICA       @map("ESPECIALIZACION_TECNICA")
+  ESPECIALIZACION_TECNOLOGICA   @map("ESPECIALIZACION_TECNOLOGICA")
+  ESPECIALIZACION_UNIVERSITARIA @map("ESPECIALIZACION_UNIVERSITARIA")
+  MAESTRIA                      @map("MAESTRIA")
+  DOCTORADO                     @map("DOCTORADO")
 }

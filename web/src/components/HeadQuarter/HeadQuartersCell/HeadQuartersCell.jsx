@@ -7,12 +7,8 @@ export const QUERY = gql`
     headQuarters {
       id
       name
-      body
-      image
       description
-      active
       createdAt
-      programOfStudyId
     }
   }
 `

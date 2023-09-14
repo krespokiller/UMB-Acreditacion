@@ -5,12 +5,8 @@ export const QUERY = gql`
     headQuarter: headQuarter(id: $id) {
       id
       name
-      body
-      image
       description
-      active
       createdAt
-      programOfStudyId
     }
   }
 `

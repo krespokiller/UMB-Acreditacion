@@ -30,9 +30,9 @@ export const deleteHeadQuarter = ({ id }) => {
 }
 
 export const HeadQuarter = {
-  programOfStudy: (_obj, { root }) => {
+  programsOfStudy: (_obj, { root }) => {
     return db.headQuarter
       .findUnique({ where: { id: root?.id } })
-      .programOfStudy()
+      .programsOfStudy()
   },
 }

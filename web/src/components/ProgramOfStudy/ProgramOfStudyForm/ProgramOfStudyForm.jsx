@@ -5,6 +5,7 @@ import {
   Label,
   TextField,
   CheckboxField,
+  RadioField,
   NumberField,
   Submit,
 } from '@redwoodjs/forms'
@@ -112,6 +113,176 @@ const ProgramOfStudyForm = (props) => {
         />
 
         <FieldError name="active" className="rw-field-error" />
+
+        <Label
+          name="programType"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Program type
+        </Label>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-programType-0"
+            name="programType"
+            defaultValue="PREGRADO"
+            defaultChecked={props.programOfStudy?.programType?.includes(
+              'PREGRADO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Pregrado</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-programType-1"
+            name="programType"
+            defaultValue="POSGRADO"
+            defaultChecked={props.programOfStudy?.programType?.includes(
+              'POSGRADO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Posgrado</div>
+        </div>
+
+        <FieldError name="programType" className="rw-field-error" />
+
+        <Label
+          name="carrerType"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Carrer type
+        </Label>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-0"
+            name="carrerType"
+            defaultValue="TECNICO"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'TECNICO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Tecnico</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-1"
+            name="carrerType"
+            defaultValue="TECNOLOGO"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'TECNOLOGO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Tecnologo</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-2"
+            name="carrerType"
+            defaultValue="PROFESIONAL"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'PROFESIONAL'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Profesional</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-3"
+            name="carrerType"
+            defaultValue="ESPECIALIZACION_TECNICA"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'ESPECIALIZACION_TECNICA'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Especializacion Tecnica</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-4"
+            name="carrerType"
+            defaultValue="ESPECIALIZACION_TECNOLOGICA"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'ESPECIALIZACION_TECNOLOGICA'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Especializacion Tecnologica</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-5"
+            name="carrerType"
+            defaultValue="ESPECIALIZACION_UNIVERSITARIA"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'ESPECIALIZACION_UNIVERSITARIA'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Especializacion Universitaria</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-6"
+            name="carrerType"
+            defaultValue="MAESTRIA"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'MAESTRIA'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Maestria</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-carrerType-7"
+            name="carrerType"
+            defaultValue="DOCTORADO"
+            defaultChecked={props.programOfStudy?.carrerType?.includes(
+              'DOCTORADO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Doctorado</div>
+        </div>
+
+        <FieldError name="carrerType" className="rw-field-error" />
 
         <Label
           name="headQuarterId"

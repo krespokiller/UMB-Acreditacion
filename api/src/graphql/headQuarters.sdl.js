@@ -2,13 +2,9 @@ export const schema = gql`
   type HeadQuarter {
     id: Int!
     name: String!
-    body: String!
-    image: String!
     description: String!
-    active: Boolean!
     createdAt: DateTime!
-    programOfStudyId: Int
-    programOfStudy: ProgramOfStudy
+    programsOfStudy: [ProgramOfStudy]!
   }
 
   type Query {
@@ -18,20 +14,12 @@ export const schema = gql`
 
   input CreateHeadQuarterInput {
     name: String!
-    body: String!
-    image: String!
     description: String!
-    active: Boolean!
-    programOfStudyId: Int
   }
 
   input UpdateHeadQuarterInput {
     name: String
-    body: String
-    image: String
     description: String
-    active: Boolean
-    programOfStudyId: Int
   }
 
   type Mutation {

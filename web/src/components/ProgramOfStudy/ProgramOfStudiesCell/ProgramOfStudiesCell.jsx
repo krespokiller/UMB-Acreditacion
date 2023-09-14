@@ -11,6 +11,8 @@ export const QUERY = gql`
       image
       description
       active
+      programType
+      carrerType
       createdAt
       headQuarterId
     }

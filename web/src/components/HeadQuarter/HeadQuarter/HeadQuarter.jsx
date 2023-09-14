@@ -2,7 +2,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { checkboxInputTag, timeTag } from 'src/lib/formatters'
+import { timeTag } from 'src/lib/formatters'
 
 const DELETE_HEAD_QUARTER_MUTATION = gql`
   mutation DeleteHeadQuarterMutation($id: Int!) {
@@ -48,28 +48,12 @@ const HeadQuarter = ({ headQuarter }) => {
               <td>{headQuarter.name}</td>
             </tr>
             <tr>
-              <th>Body</th>
-              <td>{headQuarter.body}</td>
-            </tr>
-            <tr>
-              <th>Image</th>
-              <td>{headQuarter.image}</td>
-            </tr>
-            <tr>
               <th>Description</th>
               <td>{headQuarter.description}</td>
             </tr>
             <tr>
-              <th>Active</th>
-              <td>{checkboxInputTag(headQuarter.active)}</td>
-            </tr>
-            <tr>
               <th>Created at</th>
               <td>{timeTag(headQuarter.createdAt)}</td>
-            </tr>
-            <tr>
-              <th>Program of study id</th>
-              <td>{headQuarter.programOfStudyId}</td>
             </tr>
           </tbody>
         </table>
