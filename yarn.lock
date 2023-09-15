@@ -5034,6 +5034,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth-dbauth-setup@npm:6.2.1":
+  version: 6.2.1
+  resolution: "@redwoodjs/auth-dbauth-setup@npm:6.2.1"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.15
+    "@redwoodjs/cli-helpers": 6.2.1
+    "@simplewebauthn/browser": 7.2.0
+    core-js: 3.32.2
+    prompts: 2.4.2
+    secure-random-password: 0.2.3
+    terminal-link: 2.1.1
+  checksum: 2dfab2f48221917899a47285b5e7f4a2c48c3224ffe93b8b92c96ce25ff3cffd921e730d822d3926fc2740bbe1dd09b957e28279353277182a943daaa23d8c34
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/auth@npm:6.2.1":
   version: 6.2.1
   resolution: "@redwoodjs/auth@npm:6.2.1"
@@ -5602,6 +5617,22 @@ __metadata:
     prettier:
       optional: true
   checksum: 275247e686cc999d91623d67ce09171f9ed17764616bb7941877439ce44b1cba305ac049e91981660cd8690f18d797cd27cecdf26cf436eb81895093e0223f42
+  languageName: node
+  linkType: hard
+
+"@simplewebauthn/browser@npm:7.2.0":
+  version: 7.2.0
+  resolution: "@simplewebauthn/browser@npm:7.2.0"
+  dependencies:
+    "@simplewebauthn/typescript-types": "*"
+  checksum: 7a12b06bb20e1f6214524603b5d030ec110c85dee1399946400315ee4fb9e1fcc79809a41851445b7f09513b56fb6e6fca5c78365e04dee7244e19b985672cb4
+  languageName: node
+  linkType: hard
+
+"@simplewebauthn/typescript-types@npm:*":
+  version: 8.0.0
+  resolution: "@simplewebauthn/typescript-types@npm:8.0.0"
+  checksum: 1e0996bab0f1d9191208ff93f0b056721cb08f1bca57c5f2097f0aa256dc230806eb4da753206fda968f2b98eeb4be6df972356719c700a0d791b3ae723ebd4c
   languageName: node
   linkType: hard
 
@@ -21324,6 +21355,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@redwoodjs/auth-dbauth-setup": 6.2.1
     "@redwoodjs/cli-storybook": 6.2.1
     "@redwoodjs/core": 6.2.1
     "@tailwindcss/typography": ^0.5.9

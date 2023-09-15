@@ -12,6 +12,7 @@ export const schema = gql`
     headQuarterId: Int
     headQuarter: HeadQuarter
     acredition: [Acredition]!
+    users: [User]!
   }
 
   enum programType {

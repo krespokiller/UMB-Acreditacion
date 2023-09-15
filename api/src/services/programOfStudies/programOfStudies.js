@@ -40,4 +40,7 @@ export const ProgramOfStudy = {
       .findUnique({ where: { id: root?.id } })
       .acredition()
   },
+  users: (_obj, { root }) => {
+    return db.programOfStudy.findUnique({ where: { id: root?.id } }).users()
+  },
 }
