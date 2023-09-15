@@ -21,6 +21,7 @@ model ProgramOfStudy {
   createdAt     DateTime     @default(now())
   headQuarterId Int?         @unique
   headQuarter   HeadQuarter? @relation(fields: [headQuarterId], references: [id])
+  acredition    Acredition[]
 }
 
 model HeadQuarter {
@@ -29,6 +30,26 @@ model HeadQuarter {
   description     String
   createdAt       DateTime         @default(now())
   programsOfStudy ProgramOfStudy[]
+}
+
+model Acredition {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String
+  createdAt   DateTime        @default(now())
+  documents   Document[]
+  programId   Int?            @unique
+  program     ProgramOfStudy? @relation(fields: [programId], references: [id])
+}
+
+model Document {
+  id           Int         @id @default(autoincrement())
+  name         String
+  description  String
+  url          String
+  createdAt    DateTime    @default(now())
+  acreditionId Int?        @unique
+  acredition   Acredition? @relation(fields: [acreditionId], references: [id])
 }
 
 enum programType {

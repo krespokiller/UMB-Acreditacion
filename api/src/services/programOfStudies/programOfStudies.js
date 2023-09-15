@@ -35,4 +35,9 @@ export const ProgramOfStudy = {
       .findUnique({ where: { id: root?.id } })
       .headQuarter()
   },
+  acredition: (_obj, { root }) => {
+    return db.programOfStudy
+      .findUnique({ where: { id: root?.id } })
+      .acredition()
+  },
 }
