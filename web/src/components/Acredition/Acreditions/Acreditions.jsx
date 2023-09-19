@@ -43,6 +43,7 @@ const AcreditionsList = ({ acreditions }) => {
             <th>Name</th>
             <th>Description</th>
             <th>Created at</th>
+            <th>Documents required</th>
             <th>Program id</th>
             <th>&nbsp;</th>
           </tr>
@@ -54,6 +55,7 @@ const AcreditionsList = ({ acreditions }) => {
               <td>{truncate(acredition.name)}</td>
               <td>{truncate(acredition.description)}</td>
               <td>{timeTag(acredition.createdAt)}</td>
+              <td>{truncate(acredition.documentsRequired)}</td>
               <td>{truncate(acredition.programId)}</td>
               <td>
                 <nav className="rw-table-actions">

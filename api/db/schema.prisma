@@ -34,13 +34,14 @@ model HeadQuarter {
 }
 
 model Acredition {
-  id          Int             @id @default(autoincrement())
-  name        String
-  description String
-  createdAt   DateTime        @default(now())
-  documents   Document[]
-  programId   Int?            @unique
-  program     ProgramOfStudy? @relation(fields: [programId], references: [id])
+  id                Int             @id @default(autoincrement())
+  name              String
+  description       String
+  createdAt         DateTime        @default(now())
+  documentsRequired String[]
+  documents         Document[]
+  programId         Int?            @unique
+  program           ProgramOfStudy? @relation(fields: [programId], references: [id])
 }
 
 model Document {

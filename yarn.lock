@@ -5034,6 +5034,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth-dbauth-api@npm:6.2.1":
+  version: 6.2.1
+  resolution: "@redwoodjs/auth-dbauth-api@npm:6.2.1"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.15
+    base64url: 3.0.1
+    core-js: 3.32.2
+    crypto-js: 4.1.1
+    md5: 2.3.0
+    uuid: 9.0.0
+  checksum: 9128fac46e3406e74ee9cf334b805e1a58a6bd0abf49b9f1878caaa1fd7d265a344cd088bc082e77021c13f018e88168b3b785e1d9853583be7ea26d471cf1b6
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/auth-dbauth-setup@npm:6.2.1":
   version: 6.2.1
   resolution: "@redwoodjs/auth-dbauth-setup@npm:6.2.1"
@@ -5046,6 +5060,18 @@ __metadata:
     secure-random-password: 0.2.3
     terminal-link: 2.1.1
   checksum: 2dfab2f48221917899a47285b5e7f4a2c48c3224ffe93b8b92c96ce25ff3cffd921e730d822d3926fc2740bbe1dd09b957e28279353277182a943daaa23d8c34
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/auth-dbauth-web@npm:6.2.1":
+  version: 6.2.1
+  resolution: "@redwoodjs/auth-dbauth-web@npm:6.2.1"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.15
+    "@redwoodjs/auth": 6.2.1
+    "@simplewebauthn/browser": 7.2.0
+    core-js: 3.32.2
+  checksum: 144c5ff720c69c2c4344670524d7cf72052d8314518283fab70f643c4ce18a9de1a050828f4ba99d8804f5e4a32c4437d6ecf4c269a4b4e7f7c3645de7bccfdf
   languageName: node
   linkType: hard
 
@@ -8797,6 +8823,7 @@ __metadata:
   resolution: "api@workspace:api"
   dependencies:
     "@redwoodjs/api": 6.2.1
+    "@redwoodjs/auth-dbauth-api": 6.2.1
     "@redwoodjs/graphql-server": 6.2.1
   languageName: unknown
   linkType: soft
@@ -9627,6 +9654,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base64url@npm:3.0.1":
+  version: 3.0.1
+  resolution: "base64url@npm:3.0.1"
+  checksum: 5ca9d6064e9440a2a45749558dddd2549ca439a305793d4f14a900b7256b5f4438ef1b7a494e1addc66ced5d20f5c010716d353ed267e4b769e6c78074991241
+  languageName: node
+  linkType: hard
+
 "base@npm:^0.11.1":
   version: 0.11.2
   resolution: "base@npm:0.11.2"
@@ -10339,6 +10373,13 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: 96e4731b9ec8050cbb56ab684e8c48d6c33f7826b755802d14e3ebfdc51c57afeece3ea39bc6b09acc359e4363525388b915e16640c1378053820f5e70d0f27d
+  languageName: node
+  linkType: hard
+
+"charenc@npm:0.0.2":
+  version: 0.0.2
+  resolution: "charenc@npm:0.0.2"
+  checksum: a45ec39363a16799d0f9365c8dd0c78e711415113c6f14787a22462ef451f5013efae8a28f1c058f81fc01f2a6a16955f7a5fd0cd56247ce94a45349c89877d8
   languageName: node
   linkType: hard
 
@@ -11231,6 +11272,13 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 5738c312387081c98d69c98e105b6327b069197f864a60593245d64c8089c8a0a744e16349281210d56835bb9274130d825a78b2ad6853ca13cfbeffc0c31750
+  languageName: node
+  linkType: hard
+
+"crypt@npm:0.0.2":
+  version: 0.0.2
+  resolution: "crypt@npm:0.0.2"
+  checksum: adbf263441dd801665d5425f044647533f39f4612544071b1471962209d235042fb703c27eea2795c7c53e1dfc242405173003f83cf4f4761a633d11f9653f18
   languageName: node
   linkType: hard
 
@@ -15543,7 +15591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^1.1.5":
+"is-buffer@npm:^1.1.5, is-buffer@npm:~1.1.6":
   version: 1.1.6
   resolution: "is-buffer@npm:1.1.6"
   checksum: ae18aa0b6e113d6c490ad1db5e8df9bdb57758382b313f5a22c9c61084875c6396d50bbf49315f5b1926d142d74dfb8d31b40d993a383e0a158b15fea7a82234
@@ -17574,6 +17622,17 @@ __metadata:
     inherits: ^2.0.1
     safe-buffer: ^5.1.2
   checksum: b7bd75077f419c8e013fc4d4dada48be71882e37d69a44af65a2f2804b91e253441eb43a0614423a1c91bb830b8140b0dc906bc797245e2e275759584f4efcc5
+  languageName: node
+  linkType: hard
+
+"md5@npm:2.3.0":
+  version: 2.3.0
+  resolution: "md5@npm:2.3.0"
+  dependencies:
+    charenc: 0.0.2
+    crypt: 0.0.2
+    is-buffer: ~1.1.6
+  checksum: 14a21d597d92e5b738255fbe7fe379905b8cb97e0a49d44a20b58526a646ec5518c337b817ce0094ca94d3e81a3313879c4c7b510d250c282d53afbbdede9110
   languageName: node
   linkType: hard
 
@@ -24224,6 +24283,7 @@ __metadata:
   resolution: "web@workspace:web"
   dependencies:
     "@heroicons/react": 1.0.6
+    "@redwoodjs/auth-dbauth-web": 6.2.1
     "@redwoodjs/forms": 6.2.1
     "@redwoodjs/router": 6.2.1
     "@redwoodjs/vite": 6.2.1

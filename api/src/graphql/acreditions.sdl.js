@@ -4,6 +4,7 @@ export const schema = gql`
     name: String!
     description: String!
     createdAt: DateTime!
+    documentsRequired: [String]!
     documents: [Document]!
     programId: Int
     program: ProgramOfStudy
@@ -17,12 +18,14 @@ export const schema = gql`
   input CreateAcreditionInput {
     name: String!
     description: String!
+    documentsRequired: [String]!
     programId: Int
   }
 
   input UpdateAcreditionInput {
     name: String
     description: String
+    documentsRequired: [String]!
     programId: Int
   }
 

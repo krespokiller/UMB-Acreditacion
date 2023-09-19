@@ -7,20 +7,27 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Router, Route, Set } from '@redwoodjs/router'
+import { Private, Router, Route, Set } from '@redwoodjs/router'
 
 import ProgramsOfStudyLayout from 'src/layouts/ProgramsOfStudyLayout'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
+import { useAuth } from './auth'
 import AdminHome from './components/AdminHome/AdminHome'
+//const ROLES_BACKOFFICE = ['ADMIN']
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
-      <Set wrap={ProgramsOfStudyLayout}>
-        <Route path="/program" page={ProgramPage} name="program" />
-        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
-      </Set>
+
+      <Private unauthenticated="/login">
+        <Set wrap={ProgramsOfStudyLayout}>
+          <Route path="/program" page={ProgramPage} name="program" />
+          <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+        </Set>
+      </Private>
       {
         //admin route for scaffolds
       }
@@ -47,6 +54,7 @@ const Routes = () => {
         <Route path="/admin/users" page={UserUsersPage} name="users" />
         <Route path="/admin" page={AdminHome} name="adminHome" />
       </Set>
+
       <Route notfound page={NotFoundPage} />
     </Router>
   )

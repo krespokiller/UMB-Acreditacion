@@ -12,6 +12,7 @@ export const QUERY = gql`
       name
       description
       createdAt
+      documentsRequired
       programId
     }
   }
@@ -23,6 +24,7 @@ const UPDATE_ACREDITION_MUTATION = gql`
       name
       description
       createdAt
+      documentsRequired
       programId
     }
   }

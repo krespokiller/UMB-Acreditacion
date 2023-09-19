@@ -7,7 +7,7 @@ const ScaffoldLayout = ({ title, titleTo, children }) => {
       <Toaster
         toastOptions={{
           className: 'rw-toast',
-          duration: 6000,
+          duration: 300,
 
           children: ({ message, timeout }) => (
             <>
@@ -19,22 +19,16 @@ const ScaffoldLayout = ({ title, titleTo, children }) => {
       />
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes[titleTo]()} className="rw-link">
-            {title}
+          <Link
+            to={routes[titleTo]()}
+            onClick={() => {
+              toast.success('AdminHome')
+            }}
+          >
+            AdminHome
           </Link>
         </h1>
-        <Link
-          to={routes[titleTo]()}
-          onClick={
-            //throw toasts
-            () => {
-              toast.success('AdminHome')
-              toast.error('AdminHome')
-            }
-          }
-        >
-          AdminHome
-        </Link>
+
         <Link to={routes['headQuarters']()}>Sedes</Link>
         <Link to={routes['programOfStudies']()}>Programas</Link>
         <Link to={routes['documents']()}>Documentos</Link>

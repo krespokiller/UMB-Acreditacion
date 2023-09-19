@@ -27,11 +27,16 @@ describe('acreditions', () => {
 
   scenario('creates a acredition', async () => {
     const result = await createAcredition({
-      input: { name: 'String', description: 'String' },
+      input: {
+        name: 'String',
+        description: 'String',
+        documentsRequired: 'String',
+      },
     })
 
     expect(result.name).toEqual('String')
     expect(result.description).toEqual('String')
+    expect(result.documentsRequired).toEqual('String')
   })
 
   scenario('updates a acredition', async (scenario) => {

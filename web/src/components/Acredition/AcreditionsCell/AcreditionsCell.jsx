@@ -9,6 +9,7 @@ export const QUERY = gql`
       name
       description
       createdAt
+      documentsRequired
       programId
     }
   }
