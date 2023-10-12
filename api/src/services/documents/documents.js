@@ -33,4 +33,9 @@ export const Document = {
   acredition: (_obj, { root }) => {
     return db.document.findUnique({ where: { id: root?.id } }).acredition()
   },
+  qualifiedRegistry: (_obj, { root }) => {
+    return db.document
+      .findUnique({ where: { id: root?.id } })
+      .qualifiedRegistry()
+  },
 }

@@ -8,7 +8,6 @@ export const schema = gql`
     salt: String!
     resetToken: String
     resetTokenExpiresAt: DateTime
-    programs: [ProgramOfStudy]!
     createdAt: DateTime!
     updatedAt: DateTime
   }

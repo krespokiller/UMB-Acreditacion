@@ -56,10 +56,6 @@ const Acredition = ({ acredition }) => {
               <td>{timeTag(acredition.createdAt)}</td>
             </tr>
             <tr>
-              <th>Documents required</th>
-              <td>{acredition.documentsRequired}</td>
-            </tr>
-            <tr>
               <th>Program id</th>
               <td>{acredition.programId}</td>
             </tr>

@@ -15,6 +15,11 @@ export const QUERY = gql`
       carrerType
       createdAt
       headQuarterId
+      classification
+      expirationYear
+      docenciaServicio
+      reaccreditationStatus
+      academicGroupId
     }
   }
 `

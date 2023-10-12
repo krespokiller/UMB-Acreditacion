@@ -7,6 +7,8 @@ export const schema = gql`
     createdAt: DateTime!
     acreditionId: Int
     acredition: Acredition
+    qualifiedRegistryId: Int
+    qualifiedRegistry: QualifiedRegistry
   }
 
   type Query {
@@ -19,6 +21,7 @@ export const schema = gql`
     description: String!
     url: String!
     acreditionId: Int
+    qualifiedRegistryId: Int
   }
 
   input UpdateDocumentInput {
@@ -26,6 +29,7 @@ export const schema = gql`
     description: String
     url: String
     acreditionId: Int
+    qualifiedRegistryId: Int
   }
 
   type Mutation {

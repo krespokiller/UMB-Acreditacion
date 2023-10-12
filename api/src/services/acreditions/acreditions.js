@@ -30,10 +30,10 @@ export const deleteAcredition = ({ id }) => {
 }
 
 export const Acredition = {
-  documents: (_obj, { root }) => {
-    return db.acredition.findUnique({ where: { id: root?.id } }).documents()
-  },
   program: (_obj, { root }) => {
     return db.acredition.findUnique({ where: { id: root?.id } }).program()
+  },
+  documents: (_obj, { root }) => {
+    return db.acredition.findUnique({ where: { id: root?.id } }).documents()
   },
 }

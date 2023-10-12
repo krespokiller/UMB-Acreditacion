@@ -1,7 +1,7 @@
-import LoginPage from './LoginPage'
+import HomePage from './HomePage'
 
 const meta = {
-  component: LoginPage,
+  component: HomePage,
 }
 
 export default meta

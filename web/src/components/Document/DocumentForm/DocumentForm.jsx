@@ -1,5 +1,3 @@
-import { useRef, useEffect, useState } from 'react'
-
 import {
   Form,
   FormError,
@@ -11,38 +9,9 @@ import {
 } from '@redwoodjs/forms'
 
 const DocumentForm = (props) => {
-  const rendered = useRef(false)
-  const [picker, setPicker] = useState(null)
-  //const FILESTACK_API_KEY = process.env.FILESTACK_API_KEY
   const onSubmit = (data) => {
     props.onSave(data, props?.document?.id)
   }
-
-  useEffect(() => {
-    if (!rendered.current) {
-      rendered.current = true
-      const script = document.createElement('script')
-      script.src =
-        '//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js'
-      script.async = true
-      document.body.appendChild(script)
-      script.onload = () => {
-        console.log('loaded')
-        const client = window.filestack.init('A3tdHulIRTOXkwqFTi1E8z')
-        const picker = client.picker({
-          uploadConfig: {
-            retry: 2,
-            timeout: 10000,
-          },
-          storeTo: {
-            location: 'azure',
-            path: '/programName/',
-          },
-        })
-        setPicker(picker)
-      }
-    }
-  }, [])
 
   return (
     <div className="rw-form-wrapper">
@@ -104,14 +73,6 @@ const DocumentForm = (props) => {
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
-          onClick={() => {
-            if (picker) {
-              picker.open()
-              picker.on('uploadDone', (res) => {
-                console.log(res)
-              })
-            }
-          }}
         />
 
         <FieldError name="url" className="rw-field-error" />
@@ -133,6 +94,24 @@ const DocumentForm = (props) => {
         />
 
         <FieldError name="acreditionId" className="rw-field-error" />
+
+        <Label
+          name="qualifiedRegistryId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Qualified registry id
+        </Label>
+
+        <NumberField
+          name="qualifiedRegistryId"
+          defaultValue={props.document?.qualifiedRegistryId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'undefined'}
+        />
+
+        <FieldError name="qualifiedRegistryId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

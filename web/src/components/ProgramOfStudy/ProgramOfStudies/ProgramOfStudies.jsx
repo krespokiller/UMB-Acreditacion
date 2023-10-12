@@ -54,6 +54,11 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
             <th>Carrer type</th>
             <th>Created at</th>
             <th>Head quarter id</th>
+            <th>Classification</th>
+            <th>Expiration year</th>
+            <th>Docencia servicio</th>
+            <th>Reaccreditation status</th>
+            <th>Academic group id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -70,6 +75,11 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
               <td>{formatEnum(programOfStudy.carrerType)}</td>
               <td>{timeTag(programOfStudy.createdAt)}</td>
               <td>{truncate(programOfStudy.headQuarterId)}</td>
+              <td>{truncate(programOfStudy.classification)}</td>
+              <td>{truncate(programOfStudy.expirationYear)}</td>
+              <td>{checkboxInputTag(programOfStudy.docenciaServicio)}</td>
+              <td>{truncate(programOfStudy.reaccreditationStatus)}</td>
+              <td>{truncate(programOfStudy.academicGroupId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

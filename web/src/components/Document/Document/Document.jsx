@@ -63,6 +63,10 @@ const Document = ({ document }) => {
               <th>Acredition id</th>
               <td>{document.acreditionId}</td>
             </tr>
+            <tr>
+              <th>Qualified registry id</th>
+              <td>{document.qualifiedRegistryId}</td>
+            </tr>
           </tbody>
         </table>
       </div>

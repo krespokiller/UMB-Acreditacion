@@ -28,9 +28,3 @@ export const deleteUser = ({ id }) => {
     where: { id },
   })
 }
-
-export const User = {
-  programs: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).programs()
-  },
-}

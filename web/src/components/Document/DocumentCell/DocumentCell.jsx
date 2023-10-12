@@ -9,6 +9,7 @@ export const QUERY = gql`
       url
       createdAt
       acreditionId
+      qualifiedRegistryId
     }
   }
 `

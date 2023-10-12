@@ -79,6 +79,26 @@ const ProgramOfStudy = ({ programOfStudy }) => {
               <th>Head quarter id</th>
               <td>{programOfStudy.headQuarterId}</td>
             </tr>
+            <tr>
+              <th>Classification</th>
+              <td>{programOfStudy.classification}</td>
+            </tr>
+            <tr>
+              <th>Expiration year</th>
+              <td>{programOfStudy.expirationYear}</td>
+            </tr>
+            <tr>
+              <th>Docencia servicio</th>
+              <td>{checkboxInputTag(programOfStudy.docenciaServicio)}</td>
+            </tr>
+            <tr>
+              <th>Reaccreditation status</th>
+              <td>{programOfStudy.reaccreditationStatus}</td>
+            </tr>
+            <tr>
+              <th>Academic group id</th>
+              <td>{programOfStudy.academicGroupId}</td>
+            </tr>
           </tbody>
         </table>
       </div>

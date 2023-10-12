@@ -14,6 +14,7 @@ export const QUERY = gql`
       url
       createdAt
       acreditionId
+      qualifiedRegistryId
     }
   }
 `
@@ -26,6 +27,7 @@ const UPDATE_DOCUMENT_MUTATION = gql`
       url
       createdAt
       acreditionId
+      qualifiedRegistryId
     }
   }
 `

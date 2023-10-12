@@ -34,7 +34,6 @@ describe('programOfStudies', () => {
         body: 'String',
         image: 'String',
         description: 'String',
-        programType: 'PREGRADO',
         carrerType: 'TECNICO',
       },
     })
@@ -43,7 +42,6 @@ describe('programOfStudies', () => {
     expect(result.body).toEqual('String')
     expect(result.image).toEqual('String')
     expect(result.description).toEqual('String')
-    expect(result.programType).toEqual('PREGRADO')
     expect(result.carrerType).toEqual('TECNICO')
   })
 

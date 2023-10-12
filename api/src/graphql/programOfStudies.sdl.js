@@ -12,7 +12,13 @@ export const schema = gql`
     headQuarterId: Int
     headQuarter: HeadQuarter
     acredition: [Acredition]!
-    users: [User]!
+    qualifiedRegistry: [QualifiedRegistry]!
+    classification: String
+    expirationYear: Int
+    docenciaServicio: Boolean
+    reaccreditationStatus: String
+    academicGroupId: Int
+    academicGroup: AcademicGroup
   }
 
   enum programType {
@@ -45,6 +51,11 @@ export const schema = gql`
     programType: programType!
     carrerType: carrerType!
     headQuarterId: Int
+    classification: String
+    expirationYear: Int
+    docenciaServicio: Boolean
+    reaccreditationStatus: String
+    academicGroupId: Int
   }
 
   input UpdateProgramOfStudyInput {
@@ -56,6 +67,11 @@ export const schema = gql`
     programType: programType
     carrerType: carrerType
     headQuarterId: Int
+    classification: String
+    expirationYear: Int
+    docenciaServicio: Boolean
+    reaccreditationStatus: String
+    academicGroupId: Int
   }
 
   type Mutation {

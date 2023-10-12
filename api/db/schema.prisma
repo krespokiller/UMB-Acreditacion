@@ -10,21 +10,42 @@ generator client {
 }
 
 model ProgramOfStudy {
-  id            Int          @id @default(autoincrement())
-  name          String
-  body          String
-  image         String
-  description   String
-  active        Boolean      @default(false) //require admin approval
-  programType   programType
-  carrerType    carrerType
-  createdAt     DateTime     @default(now())
-  headQuarterId Int?         @unique
-  headQuarter   HeadQuarter? @relation(fields: [headQuarterId], references: [id])
-  acredition    Acredition[]
-  users         User[]
+  id                    Int            @id @default(autoincrement())
+  name                  String
+  body                  String
+  image                 String
+  description           String
+  active                Boolean        @default(false) //require admin approval
+  programType           programType    @default(PREGRADO)
+  carrerType            carrerType
+  createdAt             DateTime       @default(now())
+  headQuarterId         Int?           @unique
+  headQuarter           HeadQuarter?   @relation(fields: [headQuarterId], references: [id])
+  acredition            Acredition[]
+  qualifiedRegistry     QualifiedRegistry[]
+  classification        String?
+  expirationYear        Int?
+  docenciaServicio      Boolean?
+  reaccreditationStatus String?
+  //has only one academic group
+  academicGroupId       Int?           @unique
+  academicGroup         AcademicGroup? @relation(fields: [academicGroupId], references: [id])
+  //document
 }
-
+model Faculty {
+  id             Int             @id @default(autoincrement())
+  name           String
+  createdAt      DateTime        @default(now())
+  academicGroups AcademicGroup[]
+}
+model AcademicGroup {
+  id              Int              @id @default(autoincrement())
+  name            String
+  createdAt       DateTime         @default(now())
+  programsOfStudy ProgramOfStudy[]
+  facultyId       Int?             @unique
+  faculty         Faculty?         @relation(fields: [facultyId], references: [id])
+}
 model HeadQuarter {
   id              Int              @id @default(autoincrement())
   name            String
@@ -32,40 +53,46 @@ model HeadQuarter {
   createdAt       DateTime         @default(now())
   programsOfStudy ProgramOfStudy[]
 }
-
 model Acredition {
-  id                Int             @id @default(autoincrement())
-  name              String
-  description       String
-  createdAt         DateTime        @default(now())
-  documentsRequired String[]
-  documents         Document[]
-  programId         Int?            @unique
-  program           ProgramOfStudy? @relation(fields: [programId], references: [id])
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String
+  createdAt   DateTime        @default(now())
+  programId   Int?            
+  program     ProgramOfStudy? @relation(fields: [programId], references: [id])
+  documents             Document[]
 }
-
+model QualifiedRegistry {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String
+  createdAt   DateTime        @default(now())
+  programId   Int?            
+  program     ProgramOfStudy? @relation(fields: [programId], references: [id])
+  documents             Document[]
+}
 model Document {
   id           Int         @id @default(autoincrement())
   name         String
   description  String
   url          String
   createdAt    DateTime    @default(now())
-  acreditionId Int?        @unique
+  acreditionId Int?        
   acredition   Acredition? @relation(fields: [acreditionId], references: [id])
+  qualifiedRegistryId Int?
+  qualifiedRegistry QualifiedRegistry? @relation(fields: [qualifiedRegistryId], references: [id])
 }
-
 model User {
-  id                  Int              @id @default(autoincrement())
+  id                  Int       @id @default(autoincrement())
   name                String
-  email               String           @unique
-  role                roleType         @default(CLIENT)
+  email               String    @unique
+  role                roleType  @default(CLIENT)
   hashedPassword      String
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  programs            ProgramOfStudy[]
-  createdAt           DateTime         @default(now())
-  updatedAt           DateTime?        @updatedAt
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
 }
 
 enum roleType {

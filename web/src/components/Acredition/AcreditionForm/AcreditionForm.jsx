@@ -60,24 +60,6 @@ const AcreditionForm = (props) => {
         <FieldError name="description" className="rw-field-error" />
 
         <Label
-          name="documentsRequired"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Documents required
-        </Label>
-
-        <TextField
-          name="documentsRequired"
-          defaultValue={props.acredition?.documentsRequired}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="documentsRequired" className="rw-field-error" />
-
-        <Label
           name="programId"
           className="rw-label"
           errorClassName="rw-label rw-label-error"

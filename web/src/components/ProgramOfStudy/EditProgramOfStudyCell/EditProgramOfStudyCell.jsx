@@ -18,6 +18,11 @@ export const QUERY = gql`
       carrerType
       createdAt
       headQuarterId
+      classification
+      expirationYear
+      docenciaServicio
+      reaccreditationStatus
+      academicGroupId
     }
   }
 `
@@ -37,6 +42,11 @@ const UPDATE_PROGRAM_OF_STUDY_MUTATION = gql`
       carrerType
       createdAt
       headQuarterId
+      classification
+      expirationYear
+      docenciaServicio
+      reaccreditationStatus
+      academicGroupId
     }
   }
 `

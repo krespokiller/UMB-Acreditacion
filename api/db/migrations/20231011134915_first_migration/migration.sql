@@ -15,12 +15,36 @@ CREATE TABLE "ProgramOfStudy" (
     "image" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "active" BOOLEAN NOT NULL DEFAULT false,
-    "programType" "programType" NOT NULL,
+    "programType" "programType" NOT NULL DEFAULT 'PREGRADO',
     "carrerType" "carrerType" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "headQuarterId" INTEGER,
+    "classification" TEXT,
+    "expirationYear" INTEGER,
+    "docenciaServicio" BOOLEAN,
+    "reaccreditationStatus" TEXT,
+    "academicGroupId" INTEGER,
 
     CONSTRAINT "ProgramOfStudy_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Faculty" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Faculty_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "AcademicGroup" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "facultyId" INTEGER,
+
+    CONSTRAINT "AcademicGroup_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -51,7 +75,7 @@ CREATE TABLE "Document" (
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "acreditionId" INTEGER,
+    "programId" INTEGER,
 
     CONSTRAINT "Document_pkey" PRIMARY KEY ("id")
 );
@@ -61,49 +85,46 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
     "role" "roleType" NOT NULL DEFAULT 'CLIENT',
+    "hashedPassword" TEXT NOT NULL,
+    "salt" TEXT NOT NULL,
+    "resetToken" TEXT,
+    "resetTokenExpiresAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "_ProgramOfStudyToUser" (
-    "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "ProgramOfStudy_headQuarterId_key" ON "ProgramOfStudy"("headQuarterId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ProgramOfStudy_academicGroupId_key" ON "ProgramOfStudy"("academicGroupId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "AcademicGroup_facultyId_key" ON "AcademicGroup"("facultyId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Acredition_programId_key" ON "Acredition"("programId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Document_acreditionId_key" ON "Document"("acreditionId");
+CREATE UNIQUE INDEX "Document_programId_key" ON "Document"("programId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "_ProgramOfStudyToUser_AB_unique" ON "_ProgramOfStudyToUser"("A", "B");
-
--- CreateIndex
-CREATE INDEX "_ProgramOfStudyToUser_B_index" ON "_ProgramOfStudyToUser"("B");
 
 -- AddForeignKey
 ALTER TABLE "ProgramOfStudy" ADD CONSTRAINT "ProgramOfStudy_headQuarterId_fkey" FOREIGN KEY ("headQuarterId") REFERENCES "HeadQuarter"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "ProgramOfStudy" ADD CONSTRAINT "ProgramOfStudy_academicGroupId_fkey" FOREIGN KEY ("academicGroupId") REFERENCES "AcademicGroup"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "AcademicGroup" ADD CONSTRAINT "AcademicGroup_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculty"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Acredition" ADD CONSTRAINT "Acredition_programId_fkey" FOREIGN KEY ("programId") REFERENCES "ProgramOfStudy"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Document" ADD CONSTRAINT "Document_acreditionId_fkey" FOREIGN KEY ("acreditionId") REFERENCES "Acredition"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_ProgramOfStudyToUser" ADD CONSTRAINT "_ProgramOfStudyToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "ProgramOfStudy"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_ProgramOfStudyToUser" ADD CONSTRAINT "_ProgramOfStudyToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Document" ADD CONSTRAINT "Document_programId_fkey" FOREIGN KEY ("programId") REFERENCES "ProgramOfStudy"("id") ON DELETE SET NULL ON UPDATE CASCADE;

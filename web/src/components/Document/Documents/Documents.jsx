@@ -45,6 +45,7 @@ const DocumentsList = ({ documents }) => {
             <th>Url</th>
             <th>Created at</th>
             <th>Acredition id</th>
+            <th>Qualified registry id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -57,6 +58,7 @@ const DocumentsList = ({ documents }) => {
               <td>{truncate(document.url)}</td>
               <td>{timeTag(document.createdAt)}</td>
               <td>{truncate(document.acreditionId)}</td>
+              <td>{truncate(document.qualifiedRegistryId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

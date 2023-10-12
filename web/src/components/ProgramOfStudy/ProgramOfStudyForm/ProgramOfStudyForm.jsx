@@ -302,6 +302,92 @@ const ProgramOfStudyForm = (props) => {
 
         <FieldError name="headQuarterId" className="rw-field-error" />
 
+        <Label
+          name="classification"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Classification
+        </Label>
+
+        <TextField
+          name="classification"
+          defaultValue={props.programOfStudy?.classification}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="classification" className="rw-field-error" />
+
+        <Label
+          name="expirationYear"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Expiration year
+        </Label>
+
+        <NumberField
+          name="expirationYear"
+          defaultValue={props.programOfStudy?.expirationYear}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="expirationYear" className="rw-field-error" />
+
+        <Label
+          name="docenciaServicio"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Docencia servicio
+        </Label>
+
+        <CheckboxField
+          name="docenciaServicio"
+          defaultChecked={props.programOfStudy?.docenciaServicio}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="docenciaServicio" className="rw-field-error" />
+
+        <Label
+          name="reaccreditationStatus"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Reaccreditation status
+        </Label>
+
+        <TextField
+          name="reaccreditationStatus"
+          defaultValue={props.programOfStudy?.reaccreditationStatus}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="reaccreditationStatus" className="rw-field-error" />
+
+        <Label
+          name="academicGroupId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Academic group id
+        </Label>
+
+        <NumberField
+          name="academicGroupId"
+          defaultValue={props.programOfStudy?.academicGroupId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'undefined'}
+        />
+
+        <FieldError name="academicGroupId" className="rw-field-error" />
+
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
