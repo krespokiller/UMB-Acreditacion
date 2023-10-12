@@ -10,17 +10,17 @@ generator client {
 }
 
 model ProgramOfStudy {
-  id                    Int            @id @default(autoincrement())
+  id                    Int                 @id @default(autoincrement())
   name                  String
   body                  String
   image                 String
   description           String
-  active                Boolean        @default(false) //require admin approval
-  programType           programType    @default(PREGRADO)
+  active                Boolean             @default(false) //require admin approval
+  programType           programType         @default(PREGRADO)
   carrerType            carrerType
-  createdAt             DateTime       @default(now())
-  headQuarterId         Int?           @unique
-  headQuarter           HeadQuarter?   @relation(fields: [headQuarterId], references: [id])
+  createdAt             DateTime            @default(now())
+  headQuarterId         Int?                @unique
+  headQuarter           HeadQuarter?        @relation(fields: [headQuarterId], references: [id])
   acredition            Acredition[]
   qualifiedRegistry     QualifiedRegistry[]
   classification        String?
@@ -28,16 +28,18 @@ model ProgramOfStudy {
   docenciaServicio      Boolean?
   reaccreditationStatus String?
   //has only one academic group
-  academicGroupId       Int?           @unique
-  academicGroup         AcademicGroup? @relation(fields: [academicGroupId], references: [id])
+  academicGroupId       Int?                @unique
+  academicGroup         AcademicGroup?      @relation(fields: [academicGroupId], references: [id])
   //document
 }
+
 model Faculty {
   id             Int             @id @default(autoincrement())
   name           String
   createdAt      DateTime        @default(now())
   academicGroups AcademicGroup[]
 }
+
 model AcademicGroup {
   id              Int              @id @default(autoincrement())
   name            String
@@ -46,6 +48,7 @@ model AcademicGroup {
   facultyId       Int?             @unique
   faculty         Faculty?         @relation(fields: [facultyId], references: [id])
 }
+
 model HeadQuarter {
   id              Int              @id @default(autoincrement())
   name            String
@@ -53,40 +56,44 @@ model HeadQuarter {
   createdAt       DateTime         @default(now())
   programsOfStudy ProgramOfStudy[]
 }
+
 model Acredition {
   id          Int             @id @default(autoincrement())
   name        String
   description String
   createdAt   DateTime        @default(now())
-  programId   Int?            
+  programId   Int?
   program     ProgramOfStudy? @relation(fields: [programId], references: [id])
-  documents             Document[]
+  documents   Document[]
 }
+
 model QualifiedRegistry {
   id          Int             @id @default(autoincrement())
   name        String
   description String
   createdAt   DateTime        @default(now())
-  programId   Int?            
+  programId   Int?
   program     ProgramOfStudy? @relation(fields: [programId], references: [id])
-  documents             Document[]
+  documents   Document[]
 }
+
 model Document {
-  id           Int         @id @default(autoincrement())
-  name         String
-  description  String
-  url          String
-  createdAt    DateTime    @default(now())
-  acreditionId Int?        
-  acredition   Acredition? @relation(fields: [acreditionId], references: [id])
+  id                  Int                @id @default(autoincrement())
+  name                String
+  description         String
+  url                 String
+  createdAt           DateTime           @default(now())
+  acreditionId        Int?
+  acredition          Acredition?        @relation(fields: [acreditionId], references: [id])
   qualifiedRegistryId Int?
-  qualifiedRegistry QualifiedRegistry? @relation(fields: [qualifiedRegistryId], references: [id])
+  qualifiedRegistry   QualifiedRegistry? @relation(fields: [qualifiedRegistryId], references: [id])
 }
+
 model User {
   id                  Int       @id @default(autoincrement())
   name                String
   email               String    @unique
-  role                roleType  @default(CLIENT)
+  roles               roleType  @default(CLIENT)
   hashedPassword      String
   salt                String
   resetToken          String?
@@ -96,8 +103,8 @@ model User {
 }
 
 enum roleType {
-  ADMIN  @map("ADMIN")
-  CLIENT @map("CLIENT")
+  ADMIN  @map("admin")
+  CLIENT @map("client")
 }
 
 enum programType {

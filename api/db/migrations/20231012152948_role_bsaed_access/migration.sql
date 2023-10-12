@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "roleType" AS ENUM ('ADMIN', 'CLIENT');
+CREATE TYPE "roleType" AS ENUM ('admin', 'client');
 
 -- CreateEnum
 CREATE TYPE "programType" AS ENUM ('PREGRADO', 'POSGRADO');
@@ -69,13 +69,25 @@ CREATE TABLE "Acredition" (
 );
 
 -- CreateTable
+CREATE TABLE "QualifiedRegistry" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "programId" INTEGER,
+
+    CONSTRAINT "QualifiedRegistry_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Document" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "programId" INTEGER,
+    "acreditionId" INTEGER,
+    "qualifiedRegistryId" INTEGER,
 
     CONSTRAINT "Document_pkey" PRIMARY KEY ("id")
 );
@@ -85,7 +97,7 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "role" "roleType" NOT NULL DEFAULT 'CLIENT',
+    "roles" "roleType" NOT NULL DEFAULT 'client',
     "hashedPassword" TEXT NOT NULL,
     "salt" TEXT NOT NULL,
     "resetToken" TEXT,
@@ -106,12 +118,6 @@ CREATE UNIQUE INDEX "ProgramOfStudy_academicGroupId_key" ON "ProgramOfStudy"("ac
 CREATE UNIQUE INDEX "AcademicGroup_facultyId_key" ON "AcademicGroup"("facultyId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Acredition_programId_key" ON "Acredition"("programId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Document_programId_key" ON "Document"("programId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
@@ -127,4 +133,10 @@ ALTER TABLE "AcademicGroup" ADD CONSTRAINT "AcademicGroup_facultyId_fkey" FOREIG
 ALTER TABLE "Acredition" ADD CONSTRAINT "Acredition_programId_fkey" FOREIGN KEY ("programId") REFERENCES "ProgramOfStudy"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Document" ADD CONSTRAINT "Document_programId_fkey" FOREIGN KEY ("programId") REFERENCES "ProgramOfStudy"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "QualifiedRegistry" ADD CONSTRAINT "QualifiedRegistry_programId_fkey" FOREIGN KEY ("programId") REFERENCES "ProgramOfStudy"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Document" ADD CONSTRAINT "Document_acreditionId_fkey" FOREIGN KEY ("acreditionId") REFERENCES "Acredition"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Document" ADD CONSTRAINT "Document_qualifiedRegistryId_fkey" FOREIGN KEY ("qualifiedRegistryId") REFERENCES "QualifiedRegistry"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -1,18 +1,22 @@
-import { db } from 'api/src/lib/db';
-
+import { db } from 'api/src/lib/db'
+import CryptoJS from 'crypto-js'
 // Function to generate random string
-const getRandomString = () => Math.random().toString(36).substring(7);
+const getRandomString = () => Math.random().toString(36).substring(7)
 
 // Function to generate random boolean
-const getRandomBoolean = () => Math.random() >= 0.5;
+const getRandomBoolean = () => Math.random() >= 0.5
 
 // Function to generate random integer
-const getRandomInt = (max) => Math.floor(Math.random() * max) + 1;
+const getRandomInt = (max) => Math.floor(Math.random() * max) + 1
 
+// hashes a password using either the given `salt` argument, or creates a new
+// salt and hashes using that. Either way, returns an array with [hash, salt]
+const _hashPassword = (salt) => {
+  return CryptoJS.PBKDF2('passworrrd1', salt, { keySize: 256 / 32 }).toString()
+}
 // Seed script
 export default async () => {
   try {
-    
     // Seed data for HeadQuarter
     const headQuarterData = [
       {
@@ -24,7 +28,7 @@ export default async () => {
         description: 'Description for Headquarter 2',
       },
       // Add more HeadQuarter data as needed
-    ];
+    ]
 
     // Seed data for Faculty
     const facultyData = [
@@ -34,7 +38,7 @@ export default async () => {
       {
         name: 'Faculty 2',
       },
-    ];
+    ]
 
     // Seed data for AcademicGroup
     const academicGroupData = [
@@ -45,9 +49,9 @@ export default async () => {
       {
         name: 'Group 2',
         facultyId: 2,
-      }
+      },
       // Add more AcademicGroup data as needed
-    ];
+    ]
 
     // Seed data for ProgramOfStudy
     const programOfStudyData = [
@@ -80,7 +84,7 @@ export default async () => {
         academicGroupId: 2,
       },
       // Add more ProgramOfStudy data as needed
-    ];
+    ]
 
     // Seed data for Acredition
     const acreditionData = [
@@ -95,7 +99,7 @@ export default async () => {
         programId: 2,
       },
       // Add more Acredition data as needed
-    ];
+    ]
 
     // Seed data for qualifiedRegistry
     const qualifiedRegistry = [
@@ -138,71 +142,69 @@ export default async () => {
         qualifiedRegistryId: 2,
       },
       // Add more Document data as needed
-    ];
+    ]
+    const salt = getRandomString()
+    const salt2 = getRandomString()
 
     // Seed data for User
     const userData = [
       {
         name: 'Alice',
         email: 'alice@example.com',
-        hashedPassword: 'password1',
-        role: 'CLIENT',
-        salt: getRandomString(),
+        hashedPassword: _hashPassword(salt),
+        salt: salt,
         resetToken: getRandomString(),
         resetTokenExpiresAt: new Date(),
       },
       {
         name: 'Arnoldo',
         email: 'Arnoldo@Arnoldo.com',
-        hashedPassword: 'password2',
-        role: 'ADMIN',
-        salt: getRandomString(),
+        hashedPassword: _hashPassword(salt2),
+        salt: salt2,
         resetToken: getRandomString(),
         resetTokenExpiresAt: new Date(),
       },
       // Add more User data as needed
-    ];
+    ]
 
+    console.log(
+      'start seeding ------------------------------------------ start seeding'
+    )
 
-    console.log('start seeding ------------------------------------------ start seeding');
-
-    
     await db.headQuarter.createMany({
       data: headQuarterData,
-    });
+    })
 
     await db.faculty.createMany({
       data: facultyData,
-    });
+    })
 
     await db.academicGroup.createMany({
       data: academicGroupData,
-    }); 
+    })
 
     await db.programOfStudy.createMany({
       data: programOfStudyData,
-    });
+    })
 
     await db.acredition.createMany({
       data: acreditionData,
-    });
+    })
 
     await db.qualifiedRegistry.createMany({
       data: qualifiedRegistry,
-    });
+    })
 
     await db.document.createMany({
       data: documentData,
-    });
+    })
 
     await db.user.createMany({
       data: userData,
-    });
-    console.log('Seed data inserted successfully.');
-
+    })
+    console.log('Seed data inserted successfully.')
   } catch (error) {
-    console.error('Error while seeding data:', error);
-    throw new Error(error);
-    
+    console.error('Error while seeding data:', error)
+    throw new Error(error)
   }
-};
+}
