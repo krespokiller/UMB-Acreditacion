@@ -1,5 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
+
+import Header from 'src/components/Header/Header'
 const ScaffoldLayout = ({
   title,
   titleTo,
@@ -10,6 +12,7 @@ const ScaffoldLayout = ({
   return (
     <div className="rw-scaffold">
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+      <Header />
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link to={routes[titleTo]()} className="rw-link">

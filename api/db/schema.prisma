@@ -23,7 +23,7 @@ model ProgramOfStudy {
   headQuarter           HeadQuarter?        @relation(fields: [headQuarterId], references: [id])
   acredition            Acredition[]
   qualifiedRegistry     QualifiedRegistry[]
-  classification        String?
+  classification        clasificationType?
   expirationYear        Int?
   docenciaServicio      Boolean?
   reaccreditationStatus String?
@@ -110,6 +110,12 @@ enum roleType {
 enum programType {
   PREGRADO @map("PREGRADO")
   POSGRADO @map("POSGRADO")
+}
+
+enum clasificationType {
+  ACREDITADO @map("ACREDITADO")
+  ENESPERA   @map("ENESPERA")
+  PROYECTADO @map("PROYECTADO")
 }
 
 enum carrerType {

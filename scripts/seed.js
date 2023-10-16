@@ -63,7 +63,7 @@ export default async () => {
         active: true,
         programType: 'PREGRADO', // You can use enum values
         carrerType: 'TECNICO',
-        classification: getRandomString(),
+        classification: 'ACREDITADO',
         expirationYear: getRandomInt(10) + 2023,
         docenciaServicio: getRandomBoolean(),
         headQuarterId: 1,
@@ -77,7 +77,7 @@ export default async () => {
         active: true,
         programType: 'POSGRADO',
         carrerType: 'PROFESIONAL',
-        classification: getRandomString(),
+        classification: 'ACREDITADO',
         expirationYear: getRandomInt(10) + 2023,
         docenciaServicio: getRandomBoolean(),
         headQuarterId: 2,
