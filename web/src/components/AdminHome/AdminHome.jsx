@@ -101,7 +101,6 @@ chartdata.forEach((item) => {
     reducedData.push(accreditationData)
   })
 })
-console.log(reducedData)
 
 const AdminHome = () => {
   return (

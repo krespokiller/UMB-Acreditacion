@@ -4,6 +4,7 @@ import {
   createProgramOfStudy,
   updateProgramOfStudy,
   deleteProgramOfStudy,
+  searchProgramOfStudies,
 } from './programOfStudies'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -65,4 +66,21 @@ describe('programOfStudies', () => {
 
     expect(result).toEqual(null)
   })
+  scenario(
+    'must throw error searching if letters are not provided',
+    async () => {
+      expect(() => {
+        searchProgramOfStudies({ letters: '' })
+      }).toThrow('You must provide letters to search for a program of study')
+    }
+  )
+  scenario(
+    'returns all programOfStudies that match with letters',
+    async (scenario) => {
+      const result = await searchProgramOfStudies({ letters: 'med' })
+      expect(result.length).toEqual(2)
+      expect(result[0].name).toEqual(scenario.programOfStudy.three.name)
+      expect(result[1].name).toEqual(scenario.programOfStudy.five.name)
+    }
+  )
 })

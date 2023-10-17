@@ -3,7 +3,6 @@ import ProgramOfStudiesCell from 'src/components/ProgramOfStudy/ProgramOfStudies
 
 const DashboardPage = () => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
-  console.log(currentUser)
   return (
     <>
       <div className="flex justify-end">

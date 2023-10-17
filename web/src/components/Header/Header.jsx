@@ -1,9 +1,11 @@
+import { navigate, routes } from '@redwoodjs/router'
+
 import { useAuth } from 'src/auth'
 const Header = () => {
   const { currentUser, logOut } = useAuth()
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 650)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-
+  const [search, setSearch] = React.useState('')
   React.useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 650)
@@ -52,18 +54,23 @@ const Header = () => {
         </button>
 
         {isMenuOpen && (
-          <div className="fixed right-0 top-20 flex h-screen flex-col items-end bg-white px-4 md:hidden">
+          <div
+            className="fixed right-0 flex h-screen flex-col items-end bg-white px-4 md:hidden"
+            style={{ top: '37px', zIndex: '1' }}
+          >
             {/* Barra de búsqueda */}
             <div className="relative mb-4 flex w-full">
               <input
                 type="text"
                 placeholder="Buscar..."
-                className="rounded-md border border-gray-300 bg-white p-2 focus:border-red-500 focus:outline-none"
+                className="rounded-md border border-gray-300 bg-white p-2 hover:border-red-500 focus:outline-none"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
               />
               <button
                 className="absolute right-0 rounded-md p-2"
                 onClick={() => {
-                  alert('Buscar')
+                  navigate(routes.search({ letters: search }))
                 }}
               >
                 {/* Icono de búsqueda personalizado */}
@@ -154,13 +161,15 @@ const Header = () => {
         <input
           type="text"
           placeholder="Buscar..."
-          className="active:border-red w-full rounded-md border p-2 md:w-96"
+          className="w-full rounded-md border border-gray-300 bg-white p-2 hover:border-red-500 focus:outline-none md:w-96"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
         />
         <button
           className="absolute right-0 rounded-md bg-white p-2"
           style={{ marginRight: '1px' }}
           onClick={() => {
-            alert('buscar')
+            navigate(routes.search({ letters: search }))
           }}
         >
           {/* Icono de búsqueda personalizado */}

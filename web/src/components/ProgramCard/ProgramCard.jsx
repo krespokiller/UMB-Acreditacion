@@ -1,16 +1,13 @@
-const ProgramCard = ({
-  imageSrc,
-  active,
-  programType,
-  headquarter,
-  classification,
-  title,
-  handleClick,
-}) => {
+const ProgramCard = ({ programOfStudy, handleClick }) => {
+  const { image, active, programType, headQuarter, classification, title } =
+    programOfStudy
   return (
     <div
       className="relative mx-auto max-w-full overflow-hidden rounded-xl bg-white p-4 shadow-lg focus:border-red-500 focus:outline-none focus:ring"
-      onClick={handleClick()}
+      onClick={(e) => {
+        e.preventDefault()
+        handleClick(programOfStudy)
+      }}
       aria-hidden="true"
     >
       {/* Card Content */}
@@ -19,7 +16,7 @@ const ProgramCard = ({
         <div className="col-span-1">
           <img
             className="h-16 w-16 rounded-full object-cover"
-            src={imageSrc}
+            src={image}
             alt="Avatar"
           />
         </div>
@@ -43,7 +40,7 @@ const ProgramCard = ({
           <strong>Tipo de programa:</strong> {programType}
         </div>
         <div className="text-base text-sm lg:text-base">
-          <strong>Sede:</strong> {headquarter}
+          <strong>Sede:</strong> {headQuarter.name}
         </div>
         <div className="text-base text-sm lg:text-base">
           <strong>Estus de acreditacion:</strong> {classification}

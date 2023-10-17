@@ -28,7 +28,37 @@ export const deleteProgramOfStudy = ({ id }) => {
     where: { id },
   })
 }
-
+export const searchProgramOfStudies = ({ letters }) => {
+  if (!letters || letters === '') {
+    throw new Error('You must provide letters to search for a program of study')
+  }
+  return db.programOfStudy.findMany({
+    where: {
+      name: {
+        contains: letters,
+        mode: 'insensitive', // This makes the search case-insensitive
+      },
+    },
+    include: {
+      headQuarter: true,
+      acredition: {
+        include: {
+          documents: true,
+        },
+      },
+      qualifiedRegistry: {
+        include: {
+          documents: true,
+        },
+      },
+      academicGroup: {
+        include: {
+          faculty: true,
+        },
+      },
+    },
+  })
+}
 export const ProgramOfStudy = {
   headQuarter: (_obj, { root }) => {
     return db.programOfStudy

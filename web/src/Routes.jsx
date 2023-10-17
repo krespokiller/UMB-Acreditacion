@@ -26,7 +26,7 @@ const Routes = () => {
         <Set wrap={ProgramsOfStudyLayout}>
           <Route path="/program" page={ProgramPage} name="program" />
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
-          <Route path="/search" page={SearchPage} name="search" />
+          <Route path="/search/{letters:String}" page={SearchPage} name="search" />
         </Set>
       </Private>
 

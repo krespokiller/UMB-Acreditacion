@@ -40,6 +40,7 @@ export const schema = gql`
   type Query {
     programOfStudies: [ProgramOfStudy!]! @requireAuth
     programOfStudy(id: Int!): ProgramOfStudy @requireAuth
+    searchProgramOfStudies(letters: String!): [ProgramOfStudy!]! @requireAuth
   }
 
   input CreateProgramOfStudyInput {
