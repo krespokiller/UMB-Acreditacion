@@ -70,7 +70,9 @@ const Header = () => {
               <button
                 className="absolute right-0 rounded-md p-2"
                 onClick={() => {
-                  navigate(routes.search({ letters: search }))
+                  if (search) {
+                    navigate(routes.search({ letters: search }))
+                  }
                 }}
               >
                 {/* Icono de búsqueda personalizado */}
@@ -169,7 +171,9 @@ const Header = () => {
           className="absolute right-0 rounded-md bg-white p-2"
           style={{ marginRight: '1px' }}
           onClick={() => {
-            navigate(routes.search({ letters: search }))
+            if (search) {
+              navigate(routes.search({ letters: search }))
+            }
           }}
         >
           {/* Icono de búsqueda personalizado */}

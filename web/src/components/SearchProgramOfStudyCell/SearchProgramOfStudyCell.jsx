@@ -1,5 +1,6 @@
-import ProgramCard from '../ProgramCard/ProgramCard'
+import { navigate, routes } from '@redwoodjs/router'
 
+import ProgramCard from '../ProgramCard/ProgramCard'
 export const QUERY = gql`
   query searchProgramOfStudies($letters: String!) {
     searchProgramOfStudies: searchProgramOfStudies(letters: $letters) {
@@ -55,7 +56,7 @@ export const Failure = ({ error }) => (
 
 export const Success = ({ searchProgramOfStudies }) => {
   const handleClick = (programOfStudy) => {
-    console.log('redirect to ->', programOfStudy)
+    navigate(routes.program({ id: programOfStudy.id }))
   }
   return (
     <div className={`grid grid-cols-1 gap-4 md:grid-cols-2`}>
