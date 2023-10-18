@@ -20,21 +20,29 @@ const Template = (args) => <ProgramCard {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  imageSrc: 'https://placekitten.com/400/300',
-  active: true,
-  programType: 'POSTGRADO',
-  headquarter: 'Bogotá',
-  classification: 'ACREDITADO',
-  title: 'Enfermeria',
+  programOfStudy: {
+    image: 'https://placekitten.com/400/300',
+    active: true,
+    programType: 'POSTGRADO',
+    headQuarter: {
+      name: 'Bogotá',
+    },
+    classification: 'ACREDITADO',
+    name: 'Enfermeria',
+  },
   handleClick: () => action('Clicked'),
 }
 export const Secondary = Template.bind({})
 Secondary.args = {
-  imageSrc: 'https://placekitten.com/400/300',
-  active: false,
-  programType: 'POSTGRADO',
-  headquarter: 'Bogotá',
-  classification: 'ENESPERA',
-  title: 'Enfermeria',
+  programOfStudy: {
+    image: 'https://placekitten.com/400/300',
+    active: false,
+    programType: 'POSTGRADO',
+    headQuarter: {
+      name: 'Bogotá',
+    },
+    classification: 'ENESPERA',
+    name: 'Enfermeria',
+  },
   handleClick: () => action('Clicked'),
 }

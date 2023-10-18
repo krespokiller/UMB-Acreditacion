@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 
 import AcademicGroups from 'src/components/AcademicGroup/AcademicGroups'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query FindAcademicGroups {
     academicGroups {
@@ -13,7 +13,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => {
   return (

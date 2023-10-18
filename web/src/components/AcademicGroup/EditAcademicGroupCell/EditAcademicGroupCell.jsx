@@ -1,10 +1,9 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import AcademicGroupForm from 'src/components/AcademicGroup/AcademicGroupForm'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query EditAcademicGroupById($id: Int!) {
     academicGroup: academicGroup(id: $id) {
@@ -29,7 +28,7 @@ const UPDATE_ACADEMIC_GROUP_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

@@ -1,10 +1,9 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import DocumentForm from 'src/components/Document/DocumentForm'
-
 export const QUERY = gql`
   query EditDocumentById($id: Int!) {
     document: document(id: $id) {
@@ -32,7 +31,7 @@ const UPDATE_DOCUMENT_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

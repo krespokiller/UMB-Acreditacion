@@ -1,10 +1,9 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import AcreditionForm from 'src/components/Acredition/AcreditionForm'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query EditAcreditionById($id: Int!) {
     acredition: acredition(id: $id) {
@@ -28,7 +27,7 @@ const UPDATE_ACREDITION_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

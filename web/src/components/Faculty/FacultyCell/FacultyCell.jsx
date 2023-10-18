@@ -1,5 +1,5 @@
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import Faculty from 'src/components/Faculty/Faculty'
-
 export const QUERY = gql`
   query FindFacultyById($id: Int!) {
     faculty: faculty(id: $id) {
@@ -10,7 +10,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>Faculty not found</div>
 

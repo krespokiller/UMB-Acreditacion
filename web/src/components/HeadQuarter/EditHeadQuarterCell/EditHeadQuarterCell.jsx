@@ -1,10 +1,9 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import HeadQuarterForm from 'src/components/HeadQuarter/HeadQuarterForm'
-
 export const QUERY = gql`
   query EditHeadQuarterById($id: Int!) {
     headQuarter: headQuarter(id: $id) {
@@ -29,7 +28,7 @@ const UPDATE_HEAD_QUARTER_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

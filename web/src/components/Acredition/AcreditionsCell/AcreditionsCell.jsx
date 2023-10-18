@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 
 import Acreditions from 'src/components/Acredition/Acreditions'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query FindAcreditions {
     acreditions {
@@ -14,7 +14,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => {
   return (

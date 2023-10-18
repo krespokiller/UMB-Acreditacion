@@ -1,5 +1,5 @@
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import HeadQuarter from 'src/components/HeadQuarter/HeadQuarter'
-
 export const QUERY = gql`
   query FindHeadQuarterById($id: Int!) {
     headQuarter: headQuarter(id: $id) {
@@ -11,7 +11,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>HeadQuarter not found</div>
 

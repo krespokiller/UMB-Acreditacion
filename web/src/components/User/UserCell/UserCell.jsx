@@ -1,5 +1,5 @@
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import User from 'src/components/User/User'
-
 export const QUERY = gql`
   query FindUserById($id: Int!) {
     user: user(id: $id) {
@@ -17,7 +17,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>User not found</div>
 

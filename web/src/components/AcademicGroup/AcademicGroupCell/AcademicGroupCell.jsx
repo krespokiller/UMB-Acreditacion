@@ -1,5 +1,5 @@
 import AcademicGroup from 'src/components/AcademicGroup/AcademicGroup'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query FindAcademicGroupById($id: Int!) {
     academicGroup: academicGroup(id: $id) {
@@ -11,7 +11,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>AcademicGroup not found</div>
 

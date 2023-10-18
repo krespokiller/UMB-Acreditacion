@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import Faculties from 'src/components/Faculty/Faculties'
-
 export const QUERY = gql`
   query FindFaculties {
     faculties {
@@ -12,7 +12,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => {
   return (

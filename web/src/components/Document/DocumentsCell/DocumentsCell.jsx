@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import Documents from 'src/components/Document/Documents'
-
 export const QUERY = gql`
   query FindDocuments {
     documents {
@@ -16,7 +16,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => {
   return (

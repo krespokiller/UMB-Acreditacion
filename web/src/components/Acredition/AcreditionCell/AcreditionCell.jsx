@@ -1,5 +1,5 @@
 import Acredition from 'src/components/Acredition/Acredition'
-
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 export const QUERY = gql`
   query FindAcreditionById($id: Int!) {
     acredition: acredition(id: $id) {
@@ -12,7 +12,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>Acredition not found</div>
 

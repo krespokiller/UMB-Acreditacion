@@ -1,5 +1,5 @@
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import QualifiedRegistry from 'src/components/QualifiedRegistry/QualifiedRegistry'
-
 export const QUERY = gql`
   query FindQualifiedRegistryById($id: Int!) {
     qualifiedRegistry: qualifiedRegistry(id: $id) {
@@ -12,7 +12,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => <div>QualifiedRegistry not found</div>
 

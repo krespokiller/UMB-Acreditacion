@@ -1,6 +1,8 @@
 import { navigate, routes } from '@redwoodjs/router'
 
-import ProgramCard from '../ProgramCard/ProgramCard'
+import CustomLoading from 'src/components/CustomLoading/CustomLoading'
+import ProgramCard from 'src/components/ProgramCard/ProgramCard'
+
 export const QUERY = gql`
   query searchProgramOfStudies($letters: String!) {
     searchProgramOfStudies: searchProgramOfStudies(letters: $letters) {
@@ -41,7 +43,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <CustomLoading />
 
 export const Empty = () => (
   <div className="mx-4">
@@ -59,14 +61,22 @@ export const Success = ({ searchProgramOfStudies }) => {
     navigate(routes.program({ id: programOfStudy.id }))
   }
   return (
-    <div className={`grid grid-cols-1 gap-4 md:grid-cols-2`}>
-      {searchProgramOfStudies.map((programOfStudy) => (
-        <ProgramCard
-          handleClick={handleClick}
-          programOfStudy={programOfStudy}
-          key={programOfStudy.id}
-        />
-      ))}
+    <div className="grid grid-cols-1 gap-4">
+      <div className="text-md mb-4 font-semibold lg:text-2xl">
+        Resultados de la búsqueda
+      </div>
+      <div className={`grid grid-cols-1 gap-4 md:grid-cols-2 md:p-4`}>
+        {searchProgramOfStudies.map((programOfStudy) => (
+          <ProgramCard
+            handleClick={handleClick}
+            programOfStudy={programOfStudy}
+            key={programOfStudy.id}
+          />
+        ))}
+      </div>
+      <div className="text-base text-sm lg:text-base">
+        <strong>Numero de resultados:</strong> {searchProgramOfStudies.length}
+      </div>
     </div>
   )
 }
