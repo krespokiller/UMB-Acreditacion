@@ -4,12 +4,12 @@ import { toast } from '@redwoodjs/web/toast'
 
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import ProgramOfStudyForm from 'src/components/ProgramOfStudy/ProgramOfStudyForm'
+
 export const QUERY = gql`
   query EditProgramOfStudyById($id: Int!) {
     programOfStudy: programOfStudy(id: $id) {
       id
       name
-      body
       image
       description
       active
@@ -18,9 +18,11 @@ export const QUERY = gql`
       createdAt
       headQuarterId
       classification
-      expirationYear
       docenciaServicio
       reaccreditationStatus
+      credits
+      sniesCode
+      coursesNumber
       academicGroupId
     }
   }
@@ -33,7 +35,6 @@ const UPDATE_PROGRAM_OF_STUDY_MUTATION = gql`
     updateProgramOfStudy(id: $id, input: $input) {
       id
       name
-      body
       image
       description
       active
@@ -42,9 +43,11 @@ const UPDATE_PROGRAM_OF_STUDY_MUTATION = gql`
       createdAt
       headQuarterId
       classification
-      expirationYear
       docenciaServicio
       reaccreditationStatus
+      credits
+      sniesCode
+      coursesNumber
       academicGroupId
     }
   }

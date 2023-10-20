@@ -46,7 +46,6 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Body</th>
             <th>Image</th>
             <th>Description</th>
             <th>Active</th>
@@ -55,9 +54,11 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
             <th>Created at</th>
             <th>Head quarter id</th>
             <th>Classification</th>
-            <th>Expiration year</th>
             <th>Docencia servicio</th>
             <th>Reaccreditation status</th>
+            <th>Credits</th>
+            <th>Snies code</th>
+            <th>Courses number</th>
             <th>Academic group id</th>
             <th>&nbsp;</th>
           </tr>
@@ -67,7 +68,6 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
             <tr key={programOfStudy.id}>
               <td>{truncate(programOfStudy.id)}</td>
               <td>{truncate(programOfStudy.name)}</td>
-              <td>{truncate(programOfStudy.body)}</td>
               <td>{truncate(programOfStudy.image)}</td>
               <td>{truncate(programOfStudy.description)}</td>
               <td>{checkboxInputTag(programOfStudy.active)}</td>
@@ -75,10 +75,12 @@ const ProgramOfStudiesList = ({ programOfStudies }) => {
               <td>{formatEnum(programOfStudy.carrerType)}</td>
               <td>{timeTag(programOfStudy.createdAt)}</td>
               <td>{truncate(programOfStudy.headQuarterId)}</td>
-              <td>{truncate(programOfStudy.classification)}</td>
-              <td>{truncate(programOfStudy.expirationYear)}</td>
+              <td>{formatEnum(programOfStudy.classification)}</td>
               <td>{checkboxInputTag(programOfStudy.docenciaServicio)}</td>
               <td>{truncate(programOfStudy.reaccreditationStatus)}</td>
+              <td>{truncate(programOfStudy.credits)}</td>
+              <td>{truncate(programOfStudy.sniesCode)}</td>
+              <td>{truncate(programOfStudy.coursesNumber)}</td>
               <td>{truncate(programOfStudy.academicGroupId)}</td>
               <td>
                 <nav className="rw-table-actions">

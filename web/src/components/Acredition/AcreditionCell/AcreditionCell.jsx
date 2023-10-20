@@ -5,9 +5,10 @@ export const QUERY = gql`
     acredition: acredition(id: $id) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `

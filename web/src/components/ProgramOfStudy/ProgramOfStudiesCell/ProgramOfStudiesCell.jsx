@@ -2,12 +2,12 @@ import { Link, routes } from '@redwoodjs/router'
 
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import ProgramOfStudies from 'src/components/ProgramOfStudy/ProgramOfStudies'
+
 export const QUERY = gql`
   query FindProgramOfStudies {
     programOfStudies {
       id
       name
-      body
       image
       description
       active
@@ -16,9 +16,11 @@ export const QUERY = gql`
       createdAt
       headQuarterId
       classification
-      expirationYear
       docenciaServicio
       reaccreditationStatus
+      credits
+      sniesCode
+      coursesNumber
       academicGroupId
     }
   }

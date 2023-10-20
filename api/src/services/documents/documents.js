@@ -38,4 +38,10 @@ export const Document = {
       .findUnique({ where: { id: root?.id } })
       .qualifiedRegistry()
   },
+  selfAssessment: (_obj, { root }) => {
+    return db.document.findUnique({ where: { id: root?.id } }).selfAssessment()
+  },
+  programUpdate: (_obj, { root }) => {
+    return db.document.findUnique({ where: { id: root?.id } }).programUpdate()
+  },
 }

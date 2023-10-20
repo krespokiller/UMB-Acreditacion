@@ -1,17 +1,19 @@
 import { navigate, routes } from '@redwoodjs/router'
+
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import QualifiedRegistryForm from 'src/components/QualifiedRegistry/QualifiedRegistryForm'
+
 export const QUERY = gql`
   query EditQualifiedRegistryById($id: Int!) {
     qualifiedRegistry: qualifiedRegistry(id: $id) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `
@@ -23,14 +25,15 @@ const UPDATE_QUALIFIED_REGISTRY_MUTATION = gql`
     updateQualifiedRegistry(id: $id, input: $input) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `
 
-export const Loading = () => <CustomLoading />
+export const Loading = () => <div>Loading...</div>
 
 export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error?.message}</div>

@@ -53,16 +53,20 @@ const QualifiedRegistry = ({ qualifiedRegistry }) => {
               <td>{qualifiedRegistry.name}</td>
             </tr>
             <tr>
-              <th>Description</th>
-              <td>{qualifiedRegistry.description}</td>
-            </tr>
-            <tr>
               <th>Created at</th>
               <td>{timeTag(qualifiedRegistry.createdAt)}</td>
             </tr>
             <tr>
+              <th>Resolution</th>
+              <td>{qualifiedRegistry.resolution}</td>
+            </tr>
+            <tr>
               <th>Program id</th>
               <td>{qualifiedRegistry.programId}</td>
+            </tr>
+            <tr>
+              <th>Expiration date</th>
+              <td>{timeTag(qualifiedRegistry.expirationDate)}</td>
             </tr>
           </tbody>
         </table>

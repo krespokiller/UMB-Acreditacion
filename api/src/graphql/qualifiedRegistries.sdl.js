@@ -2,11 +2,12 @@ export const schema = gql`
   type QualifiedRegistry {
     id: Int!
     name: String!
-    description: String!
     createdAt: DateTime!
+    resolution: String
     programId: Int
     program: ProgramOfStudy
     documents: [Document]!
+    expirationDate: DateTime
   }
 
   type Query {
@@ -16,14 +17,16 @@ export const schema = gql`
 
   input CreateQualifiedRegistryInput {
     name: String!
-    description: String!
+    resolution: String
     programId: Int
+    expirationDate: DateTime
   }
 
   input UpdateQualifiedRegistryInput {
     name: String
-    description: String
+    resolution: String
     programId: Int
+    expirationDate: DateTime
   }
 
   type Mutation {

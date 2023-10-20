@@ -9,9 +9,10 @@ export const QUERY = gql`
     acredition: acredition(id: $id) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `
@@ -20,9 +21,10 @@ const UPDATE_ACREDITION_MUTATION = gql`
     updateAcredition(id: $id, input: $input) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `

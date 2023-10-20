@@ -46,9 +46,10 @@ const QualifiedRegistriesList = ({ qualifiedRegistries }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Created at</th>
+            <th>Resolution</th>
             <th>Program id</th>
+            <th>Expiration date</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -57,9 +58,10 @@ const QualifiedRegistriesList = ({ qualifiedRegistries }) => {
             <tr key={qualifiedRegistry.id}>
               <td>{truncate(qualifiedRegistry.id)}</td>
               <td>{truncate(qualifiedRegistry.name)}</td>
-              <td>{truncate(qualifiedRegistry.description)}</td>
               <td>{timeTag(qualifiedRegistry.createdAt)}</td>
+              <td>{truncate(qualifiedRegistry.resolution)}</td>
               <td>{truncate(qualifiedRegistry.programId)}</td>
+              <td>{timeTag(qualifiedRegistry.expirationDate)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

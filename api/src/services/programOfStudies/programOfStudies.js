@@ -59,6 +59,39 @@ export const searchProgramOfStudies = ({ letters }) => {
     },
   })
 }
+export const estatusSAC = ({ id }) => {
+  return db.programOfStudy.findUnique({
+    where: { id: id },
+    include: {
+      acredition: {
+        include: {
+          documents: true,
+        },
+      },
+      qualifiedRegistry: {
+        include: {
+          documents: true,
+        },
+      },
+      academicGroup: {
+        include: {
+          faculty: true,
+        },
+      },
+      selfAssessment: {
+        include: {
+          documents: true,
+        },
+      },
+      programUpdate: {
+        include: {
+          documents: true,
+        },
+      },
+    },
+  })
+}
+
 export const ProgramOfStudy = {
   headQuarter: (_obj, { root }) => {
     return db.programOfStudy

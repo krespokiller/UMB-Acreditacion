@@ -41,11 +41,12 @@ const DocumentsList = ({ documents }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Url</th>
             <th>Created at</th>
             <th>Acredition id</th>
             <th>Qualified registry id</th>
+            <th>Self assessment id</th>
+            <th>Program update id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -54,11 +55,12 @@ const DocumentsList = ({ documents }) => {
             <tr key={document.id}>
               <td>{truncate(document.id)}</td>
               <td>{truncate(document.name)}</td>
-              <td>{truncate(document.description)}</td>
               <td>{truncate(document.url)}</td>
               <td>{timeTag(document.createdAt)}</td>
               <td>{truncate(document.acreditionId)}</td>
               <td>{truncate(document.qualifiedRegistryId)}</td>
+              <td>{truncate(document.selfAssessmentId)}</td>
+              <td>{truncate(document.programUpdateId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

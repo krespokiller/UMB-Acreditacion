@@ -1,20 +1,21 @@
 import { Link, routes } from '@redwoodjs/router'
 
-import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import QualifiedRegistries from 'src/components/QualifiedRegistry/QualifiedRegistries'
+
 export const QUERY = gql`
   query FindQualifiedRegistries {
     qualifiedRegistries {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `
 
-export const Loading = () => <CustomLoading />
+export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
   return (

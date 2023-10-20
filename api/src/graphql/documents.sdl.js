@@ -2,13 +2,16 @@ export const schema = gql`
   type Document {
     id: Int!
     name: String!
-    description: String!
     url: String!
     createdAt: DateTime!
     acreditionId: Int
     acredition: Acredition
     qualifiedRegistryId: Int
     qualifiedRegistry: QualifiedRegistry
+    selfAssessment: SelfAssessment
+    selfAssessmentId: Int
+    programUpdate: ProgramUpdate
+    programUpdateId: Int
   }
 
   type Query {
@@ -18,18 +21,20 @@ export const schema = gql`
 
   input CreateDocumentInput {
     name: String!
-    description: String!
     url: String!
     acreditionId: Int
     qualifiedRegistryId: Int
+    selfAssessmentId: Int
+    programUpdateId: Int
   }
 
   input UpdateDocumentInput {
     name: String
-    description: String
     url: String
     acreditionId: Int
     qualifiedRegistryId: Int
+    selfAssessmentId: Int
+    programUpdateId: Int
   }
 
   type Mutation {

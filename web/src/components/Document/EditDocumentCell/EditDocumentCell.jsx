@@ -4,16 +4,18 @@ import { toast } from '@redwoodjs/web/toast'
 
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import DocumentForm from 'src/components/Document/DocumentForm'
+
 export const QUERY = gql`
   query EditDocumentById($id: Int!) {
     document: document(id: $id) {
       id
       name
-      description
       url
       createdAt
       acreditionId
       qualifiedRegistryId
+      selfAssessmentId
+      programUpdateId
     }
   }
 `
@@ -22,11 +24,12 @@ const UPDATE_DOCUMENT_MUTATION = gql`
     updateDocument(id: $id, input: $input) {
       id
       name
-      description
       url
       createdAt
       acreditionId
       qualifiedRegistryId
+      selfAssessmentId
+      programUpdateId
     }
   }
 `

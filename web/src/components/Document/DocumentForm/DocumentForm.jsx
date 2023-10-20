@@ -42,24 +42,6 @@ const DocumentForm = (props) => {
         <FieldError name="name" className="rw-field-error" />
 
         <Label
-          name="description"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Description
-        </Label>
-
-        <TextField
-          name="description"
-          defaultValue={props.document?.description}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="description" className="rw-field-error" />
-
-        <Label
           name="url"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -112,6 +94,42 @@ const DocumentForm = (props) => {
         />
 
         <FieldError name="qualifiedRegistryId" className="rw-field-error" />
+
+        <Label
+          name="selfAssessmentId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Self assessment id
+        </Label>
+
+        <NumberField
+          name="selfAssessmentId"
+          defaultValue={props.document?.selfAssessmentId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'undefined'}
+        />
+
+        <FieldError name="selfAssessmentId" className="rw-field-error" />
+
+        <Label
+          name="programUpdateId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Program update id
+        </Label>
+
+        <NumberField
+          name="programUpdateId"
+          defaultValue={props.document?.programUpdateId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'undefined'}
+        />
+
+        <FieldError name="programUpdateId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

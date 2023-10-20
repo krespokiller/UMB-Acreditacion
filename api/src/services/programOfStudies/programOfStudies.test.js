@@ -5,6 +5,7 @@ import {
   updateProgramOfStudy,
   deleteProgramOfStudy,
   searchProgramOfStudies,
+  estatusSAC,
 } from './programOfStudies'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -32,7 +33,6 @@ describe('programOfStudies', () => {
     const result = await createProgramOfStudy({
       input: {
         name: 'String',
-        body: 'String',
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -40,7 +40,6 @@ describe('programOfStudies', () => {
     })
 
     expect(result.name).toEqual('String')
-    expect(result.body).toEqual('String')
     expect(result.image).toEqual('String')
     expect(result.description).toEqual('String')
     expect(result.carrerType).toEqual('TECNICO')
@@ -83,4 +82,13 @@ describe('programOfStudies', () => {
       expect(result[1].name).toEqual(scenario.programOfStudy.five.name)
     }
   )
+  scenario('returns estus sac for the selected program', async (scenario) => {
+    const result = await estatusSAC({ id: scenario.programOfStudy.one.id })
+    expect(result.acredition).toBeDefined()
+    expect(result.selfAssessment).toBeDefined()
+    expect(result.programUpdate).toBeDefined()
+    expect(result.qualifiedRegistry).toBeDefined()
+    //inside must have an array of documents
+    //it must be must recent for each one
+  })
 })

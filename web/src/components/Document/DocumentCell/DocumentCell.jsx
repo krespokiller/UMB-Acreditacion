@@ -1,15 +1,17 @@
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import Document from 'src/components/Document/Document'
+
 export const QUERY = gql`
   query FindDocumentById($id: Int!) {
     document: document(id: $id) {
       id
       name
-      description
       url
       createdAt
       acreditionId
       qualifiedRegistryId
+      selfAssessmentId
+      programUpdateId
     }
   }
 `

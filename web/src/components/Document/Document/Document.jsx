@@ -48,10 +48,6 @@ const Document = ({ document }) => {
               <td>{document.name}</td>
             </tr>
             <tr>
-              <th>Description</th>
-              <td>{document.description}</td>
-            </tr>
-            <tr>
               <th>Url</th>
               <td>{document.url}</td>
             </tr>
@@ -66,6 +62,14 @@ const Document = ({ document }) => {
             <tr>
               <th>Qualified registry id</th>
               <td>{document.qualifiedRegistryId}</td>
+            </tr>
+            <tr>
+              <th>Self assessment id</th>
+              <td>{document.selfAssessmentId}</td>
+            </tr>
+            <tr>
+              <th>Program update id</th>
+              <td>{document.programUpdateId}</td>
             </tr>
           </tbody>
         </table>

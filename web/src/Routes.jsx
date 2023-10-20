@@ -52,6 +52,16 @@ const Routes = () => {
           <Route path="/admin/acreditions/{id:Int}" page={AcreditionAcreditionPage} name="acredition" />
           <Route path="/admin/acreditions" page={AcreditionAcreditionsPage} name="acreditions" />
 
+          <Route path="/admin/program-updates/new" page={ProgramUpdateNewProgramUpdatePage} name="newProgramUpdate" />
+          <Route path="/admin/program-updates/{id:Int}/edit" page={ProgramUpdateEditProgramUpdatePage} name="editProgramUpdate" />
+          <Route path="/admin/program-updates/{id:Int}" page={ProgramUpdateProgramUpdatePage} name="programUpdate" />
+          <Route path="/admin/program-updates" page={ProgramUpdateProgramUpdatesPage} name="programUpdates" />
+
+          <Route path="/admin/self-assessments/new" page={SelfAssessmentNewSelfAssessmentPage} name="newSelfAssessment" />
+          <Route path="/admin/self-assessments/{id:Int}/edit" page={SelfAssessmentEditSelfAssessmentPage} name="editSelfAssessment" />
+          <Route path="/admin/self-assessments/{id:Int}" page={SelfAssessmentSelfAssessmentPage} name="selfAssessment" />
+          <Route path="/admin/self-assessments" page={SelfAssessmentSelfAssessmentsPage} name="selfAssessments" />
+
           <Route path="/admin/head-quarters/new" page={HeadQuarterNewHeadQuarterPage} name="newHeadQuarter" />
           <Route path="/admin/head-quarters/{id:Int}/edit" page={HeadQuarterEditHeadQuarterPage} name="editHeadQuarter" />
           <Route path="/admin/head-quarters/{id:Int}" page={HeadQuarterHeadQuarterPage} name="headQuarter" />

@@ -30,7 +30,7 @@ export const Primary = {
         createdAt: '2023-10-16T21:43:48.494Z',
         headQuarterId: 1,
         classification: 'ACCREDITED',
-        expirationYear: 2025,
+
         docenciaServicio: false,
         reaccreditationStatus: null,
         academicGroupId: 1,
@@ -49,7 +49,7 @@ export const Primary = {
         createdAt: '2023-10-16T21:43:48.494Z',
         headQuarterId: 1,
         classification: 'ACCREDITED',
-        expirationYear: 2025,
+
         docenciaServicio: false,
         reaccreditationStatus: null,
         academicGroupId: 2,
@@ -68,7 +68,7 @@ export const Primary = {
         createdAt: '2023-10-16T21:43:48.494Z',
         headQuarterId: 1,
         classification: 'ACCREDITED',
-        expirationYear: 2025,
+
         docenciaServicio: false,
         reaccreditationStatus: null,
         academicGroupId: 3,
@@ -87,7 +87,7 @@ export const Primary = {
         createdAt: '2023-10-16T21:43:48.494Z',
         headQuarterId: 1,
         classification: 'ACCREDITED',
-        expirationYear: 2025,
+
         docenciaServicio: false,
         reaccreditationStatus: null,
         academicGroupId: 4,
@@ -106,7 +106,7 @@ export const Primary = {
         createdAt: '2023-10-16T21:43:48.494Z',
         headQuarterId: 1,
         classification: 'ACCREDITED',
-        expirationYear: 2025,
+
         docenciaServicio: false,
         reaccreditationStatus: null,
         academicGroupId: 5,

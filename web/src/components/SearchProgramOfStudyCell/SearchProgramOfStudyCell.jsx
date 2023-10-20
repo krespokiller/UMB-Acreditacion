@@ -8,7 +8,6 @@ export const QUERY = gql`
     searchProgramOfStudies: searchProgramOfStudies(letters: $letters) {
       id
       name
-      body
       image
       description
       active
@@ -20,7 +19,6 @@ export const QUERY = gql`
         name
       }
       classification
-      expirationYear
       docenciaServicio
       reaccreditationStatus
       acredition {

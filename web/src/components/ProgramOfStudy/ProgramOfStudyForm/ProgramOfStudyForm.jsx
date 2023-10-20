@@ -12,6 +12,10 @@ import {
 
 const ProgramOfStudyForm = (props) => {
   const onSubmit = (data) => {
+    if (data.classification === '') {
+      data.classification = null
+    }
+
     props.onSave(data, props?.programOfStudy?.id)
   }
 
@@ -42,24 +46,6 @@ const ProgramOfStudyForm = (props) => {
         />
 
         <FieldError name="name" className="rw-field-error" />
-
-        <Label
-          name="body"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Body
-        </Label>
-
-        <TextField
-          name="body"
-          defaultValue={props.programOfStudy?.body}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="body" className="rw-field-error" />
 
         <Label
           name="image"
@@ -310,31 +296,65 @@ const ProgramOfStudyForm = (props) => {
           Classification
         </Label>
 
-        <TextField
-          name="classification"
-          defaultValue={props.programOfStudy?.classification}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-classification-none"
+            name="classification"
+            defaultValue=""
+            defaultChecked={!props.spot?.spotType}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div className="rw-check-radio-item-none">None</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-classification-0"
+            name="classification"
+            defaultValue="ACREDITADO"
+            defaultChecked={props.programOfStudy?.classification?.includes(
+              'ACREDITADO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Acreditado</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-classification-1"
+            name="classification"
+            defaultValue="ENESPERA"
+            defaultChecked={props.programOfStudy?.classification?.includes(
+              'ENESPERA'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Enespera</div>
+        </div>
+
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="programOfStudy-classification-2"
+            name="classification"
+            defaultValue="PROYECTADO"
+            defaultChecked={props.programOfStudy?.classification?.includes(
+              'PROYECTADO'
+            )}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+
+          <div>Proyectado</div>
+        </div>
 
         <FieldError name="classification" className="rw-field-error" />
-
-        <Label
-          name="expirationYear"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Expiration year
-        </Label>
-
-        <NumberField
-          name="expirationYear"
-          defaultValue={props.programOfStudy?.expirationYear}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="expirationYear" className="rw-field-error" />
 
         <Label
           name="docenciaServicio"
@@ -369,6 +389,57 @@ const ProgramOfStudyForm = (props) => {
         />
 
         <FieldError name="reaccreditationStatus" className="rw-field-error" />
+
+        <Label
+          name="credits"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Credits
+        </Label>
+
+        <NumberField
+          name="credits"
+          defaultValue={props.programOfStudy?.credits}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="credits" className="rw-field-error" />
+
+        <Label
+          name="sniesCode"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Snies code
+        </Label>
+
+        <TextField
+          name="sniesCode"
+          defaultValue={props.programOfStudy?.sniesCode}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="sniesCode" className="rw-field-error" />
+
+        <Label
+          name="coursesNumber"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Courses number
+        </Label>
+
+        <NumberField
+          name="coursesNumber"
+          defaultValue={props.programOfStudy?.coursesNumber}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="coursesNumber" className="rw-field-error" />
 
         <Label
           name="academicGroupId"

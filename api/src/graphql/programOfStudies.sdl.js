@@ -2,7 +2,6 @@ export const schema = gql`
   type ProgramOfStudy {
     id: Int!
     name: String!
-    body: String!
     image: String!
     description: String!
     active: Boolean!
@@ -13,14 +12,26 @@ export const schema = gql`
     headQuarter: HeadQuarter
     acredition: [Acredition]!
     qualifiedRegistry: [QualifiedRegistry]!
-    classification: String
-    expirationYear: Int
+    classification: clasificationType
     docenciaServicio: Boolean
     reaccreditationStatus: String
+    sniesCode: String
+    coursesNumber: Int
+    credits: Int
+    spaceAvailable: Int
+    duration: Int
+    admissionPeriod: Int
     academicGroupId: Int
     academicGroup: AcademicGroup
+    selfAssessment: [SelfAssessment]!
+    programUpdate: [ProgramUpdate]!
   }
-
+  type estatusSAC {
+    acredition: [Acredition]!
+    qualifiedRegistry: [QualifiedRegistry]!
+    selfAssessment: [SelfAssessment]!
+    programUpdate: [ProgramUpdate]!
+  }
   enum programType {
     PREGRADO
     POSGRADO
@@ -37,41 +48,50 @@ export const schema = gql`
     DOCTORADO
   }
 
+  enum clasificationType {
+    ACREDITADO
+    ENESPERA
+    PROYECTADO
+  }
+
   type Query {
     programOfStudies: [ProgramOfStudy!]! @requireAuth
     programOfStudy(id: Int!): ProgramOfStudy @requireAuth
+    estatusSAC(id: Int!): estatusSAC @requireAuth
     searchProgramOfStudies(letters: String!): [ProgramOfStudy!]! @requireAuth
   }
 
   input CreateProgramOfStudyInput {
     name: String!
-    body: String!
     image: String!
     description: String!
     active: Boolean!
     programType: programType!
     carrerType: carrerType!
     headQuarterId: Int
-    classification: String
-    expirationYear: Int
+    classification: clasificationType
     docenciaServicio: Boolean
     reaccreditationStatus: String
+    credits: Int
+    sniesCode: String
+    coursesNumber: Int
     academicGroupId: Int
   }
 
   input UpdateProgramOfStudyInput {
     name: String
-    body: String
     image: String
     description: String
     active: Boolean
     programType: programType
     carrerType: carrerType
     headQuarterId: Int
-    classification: String
-    expirationYear: Int
+    classification: clasificationType
     docenciaServicio: Boolean
     reaccreditationStatus: String
+    credits: Int
+    sniesCode: String
+    coursesNumber: Int
     academicGroupId: Int
   }
 

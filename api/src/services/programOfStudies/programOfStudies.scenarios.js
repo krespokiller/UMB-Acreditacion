@@ -3,16 +3,64 @@ export const standard = defineScenario({
     one: {
       data: {
         name: 'Ingenieria Industrial',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
+        acredition: {
+          create: {
+            name: 'Acredition 1',
+            resolution: 'String',
+            documents: {
+              create: {
+                name: 'Document acredition 1',
+                url: 'String',
+              },
+            },
+          },
+        },
+        selfAssessment: {
+          create: {
+            name: 'selfAssessment 1',
+            resolution: 'String',
+            documents: {
+              create: {
+                name: 'Document selfAssessment 1',
+                url: 'String',
+              },
+            },
+          },
+        },
+        programUpdate: {
+          create: {
+            name: 'programUpdate 1',
+            resolution: 'String',
+            documents: {
+              create: {
+                name: 'Document programUpdate 1',
+                url: 'String',
+              },
+            },
+          },
+        },
+        qualifiedRegistry: {
+          create: {
+            name: 'qualifiedRegistry 1',
+            resolution: 'String',
+            documents: {
+              create: {
+                name: 'Document qualifiedRegistry 1',
+                url: 'String',
+              },
+            },
+          },
+        },
       },
     },
     two: {
       data: {
         name: 'Ingenieria de Software',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -21,7 +69,7 @@ export const standard = defineScenario({
     three: {
       data: {
         name: 'Medicina',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -30,7 +78,7 @@ export const standard = defineScenario({
     four: {
       data: {
         name: 'Enfermería',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -39,7 +87,7 @@ export const standard = defineScenario({
     five: {
       data: {
         name: 'Ingenieria Biomedica',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -48,7 +96,7 @@ export const standard = defineScenario({
     six: {
       data: {
         name: 'Arquitectura',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -57,7 +105,7 @@ export const standard = defineScenario({
     seven: {
       data: {
         name: 'Contabilidad',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -66,7 +114,7 @@ export const standard = defineScenario({
     eight: {
       data: {
         name: 'Derecho',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -75,7 +123,7 @@ export const standard = defineScenario({
     nine: {
       data: {
         name: 'Psicología',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',
@@ -84,7 +132,7 @@ export const standard = defineScenario({
     ten: {
       data: {
         name: 'Biología',
-        body: 'String',
+
         image: 'String',
         description: 'String',
         carrerType: 'TECNICO',

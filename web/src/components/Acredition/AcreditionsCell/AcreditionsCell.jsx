@@ -7,9 +7,10 @@ export const QUERY = gql`
     acreditions {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `

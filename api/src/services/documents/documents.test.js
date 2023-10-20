@@ -27,11 +27,10 @@ describe('documents', () => {
 
   scenario('creates a document', async () => {
     const result = await createDocument({
-      input: { name: 'String', description: 'String', url: 'String' },
+      input: { name: 'String', url: 'String' },
     })
 
     expect(result.name).toEqual('String')
-    expect(result.description).toEqual('String')
     expect(result.url).toEqual('String')
   })
 

@@ -2,16 +2,18 @@ import { Link, routes } from '@redwoodjs/router'
 
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import Documents from 'src/components/Document/Documents'
+
 export const QUERY = gql`
   query FindDocuments {
     documents {
       id
       name
-      description
       url
       createdAt
       acreditionId
       qualifiedRegistryId
+      selfAssessmentId
+      programUpdateId
     }
   }
 `

@@ -48,16 +48,20 @@ const Acredition = ({ acredition }) => {
               <td>{acredition.name}</td>
             </tr>
             <tr>
-              <th>Description</th>
-              <td>{acredition.description}</td>
-            </tr>
-            <tr>
               <th>Created at</th>
               <td>{timeTag(acredition.createdAt)}</td>
             </tr>
             <tr>
+              <th>Resolution</th>
+              <td>{acredition.resolution}</td>
+            </tr>
+            <tr>
               <th>Program id</th>
               <td>{acredition.programId}</td>
+            </tr>
+            <tr>
+              <th>Expiration date</th>
+              <td>{timeTag(acredition.expirationDate)}</td>
             </tr>
           </tbody>
         </table>

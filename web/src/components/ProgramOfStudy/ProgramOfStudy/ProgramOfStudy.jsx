@@ -2,8 +2,8 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { checkboxInputTag, formatEnum, timeTag } from 'src/lib/formatters'
-
+import { useAuth } from 'src/auth'
+import EstatusSacCell from 'src/components/EstatusSacCell/EstatusSacCell'
 const DELETE_PROGRAM_OF_STUDY_MUTATION = gql`
   mutation DeleteProgramOfStudyMutation($id: Int!) {
     deleteProgramOfStudy(id: $id) {
@@ -13,6 +13,7 @@ const DELETE_PROGRAM_OF_STUDY_MUTATION = gql`
 `
 
 const ProgramOfStudy = ({ programOfStudy }) => {
+  const { currentUser } = useAuth()
   const [deleteProgramOfStudy] = useMutation(DELETE_PROGRAM_OF_STUDY_MUTATION, {
     onCompleted: () => {
       toast.success('ProgramOfStudy deleted')
@@ -31,92 +32,109 @@ const ProgramOfStudy = ({ programOfStudy }) => {
 
   return (
     <>
-      <div className="rw-segment">
+      <div className="rw-segment mb-4">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            ProgramOfStudy {programOfStudy.id} Detail
-          </h2>
+          <img
+            src={programOfStudy.image}
+            alt=""
+            className="h-96 w-full rounded object-cover object-center"
+          />
         </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{programOfStudy.id}</td>
-            </tr>
-            <tr>
-              <th>Name</th>
-              <td>{programOfStudy.name}</td>
-            </tr>
-            <tr>
-              <th>Body</th>
-              <td>{programOfStudy.body}</td>
-            </tr>
-            <tr>
-              <th>Image</th>
-              <td>{programOfStudy.image}</td>
-            </tr>
-            <tr>
-              <th>Description</th>
-              <td>{programOfStudy.description}</td>
-            </tr>
-            <tr>
-              <th>Active</th>
-              <td>{checkboxInputTag(programOfStudy.active)}</td>
-            </tr>
-            <tr>
-              <th>Program type</th>
-              <td>{formatEnum(programOfStudy.programType)}</td>
-            </tr>
-            <tr>
-              <th>Carrer type</th>
-              <td>{formatEnum(programOfStudy.carrerType)}</td>
-            </tr>
-            <tr>
-              <th>Created at</th>
-              <td>{timeTag(programOfStudy.createdAt)}</td>
-            </tr>
-            <tr>
-              <th>Head quarter id</th>
-              <td>{programOfStudy.headQuarterId}</td>
-            </tr>
-            <tr>
-              <th>Classification</th>
-              <td>{programOfStudy.classification}</td>
-            </tr>
-            <tr>
-              <th>Expiration year</th>
-              <td>{programOfStudy.expirationYear}</td>
-            </tr>
-            <tr>
-              <th>Docencia servicio</th>
-              <td>{checkboxInputTag(programOfStudy.docenciaServicio)}</td>
-            </tr>
-            <tr>
-              <th>Reaccreditation status</th>
-              <td>{programOfStudy.reaccreditationStatus}</td>
-            </tr>
-            <tr>
-              <th>Academic group id</th>
-              <td>{programOfStudy.academicGroupId}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editProgramOfStudy({ id: programOfStudy.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <button
-          type="button"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(programOfStudy.id)}
-        >
-          Delete
-        </button>
-      </nav>
+      {currentUser?.roles === 'ADMIN' && (
+        <nav className="rw-button-group mb-4">
+          <Link
+            to={routes.editProgramOfStudy({ id: programOfStudy.id })}
+            className="rw-button rw-button-blue"
+          >
+            Edit
+          </Link>
+          <button
+            type="button"
+            className="rw-button rw-button-red"
+            onClick={() => onDeleteClick(programOfStudy.id)}
+          >
+            Delete
+          </button>
+        </nav>
+      )}
+      <div className="p-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
+          <div className="grid grid-cols-1">
+            <h1>
+              <span className="rw-text text-lg font-medium text-red-500">
+                {programOfStudy.name}
+              </span>
+            </h1>
+            <p className="rw-label font-normal	">
+              Estado del programa:{' '}
+              <strong className="font-medium">
+                {programOfStudy.classification}
+              </strong>
+            </p>
+            <p className="rw-label font-normal	">
+              Cupos del programa:{' '}
+              <strong className="font-medium">
+                {programOfStudy.spaceAvailable}
+              </strong>
+            </p>{' '}
+            <p className="rw-label font-normal	">
+              Créditos:{' '}
+              <strong className="font-medium">{programOfStudy.credits}</strong>
+            </p>{' '}
+            <p className="rw-label font-normal	">
+              Numero de asignaturas:{' '}
+              <strong className="font-medium">
+                {programOfStudy.coursesNumber}
+              </strong>
+            </p>
+            <p className="rw-label font-normal	">
+              Periodicidad de admisión:{' '}
+              <strong className="font-medium">
+                {programOfStudy.admissionPeriod}
+              </strong>
+            </p>
+            <p className="rw-label font-normal	">
+              Duración del programa:{' '}
+              <strong className="font-medium">
+                {programOfStudy.duration} semestres
+              </strong>
+            </p>
+            <p className="rw-label font-normal	">
+              Facultad:{' '}
+              <strong className="font-medium">
+                {programOfStudy.academicGroup.faculty.name}
+              </strong>
+            </p>
+            <p className="rw-label font-normal	">
+              Unidad académica:{' '}
+              <strong className="font-medium">
+                {programOfStudy.academicGroup.name}
+              </strong>
+            </p>
+            {programOfStudy.docenciaServicio && (
+              <p className="rw-label font-normal" style={{ color: '#13c296' }}>
+                Programa con convenio:{' '}
+                <strong className="font-medium" style={{ color: '#13c296' }}>
+                  docencia - servicio
+                </strong>
+              </p>
+            )}
+            <p className="rw-label mb-4 font-normal">
+              {programOfStudy.description}
+            </p>
+            <button type="button" className="rw-button rw-button-red w-48">
+              Más información
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-8">
+            <h1 className="rw-text text-lg font-medium text-red-500">
+              Estatus SAC del programa
+            </h1>
+            <EstatusSacCell id={programOfStudy.id} />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

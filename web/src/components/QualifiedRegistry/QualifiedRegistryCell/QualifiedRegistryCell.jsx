@@ -1,18 +1,19 @@
-import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import QualifiedRegistry from 'src/components/QualifiedRegistry/QualifiedRegistry'
+
 export const QUERY = gql`
   query FindQualifiedRegistryById($id: Int!) {
     qualifiedRegistry: qualifiedRegistry(id: $id) {
       id
       name
-      description
       createdAt
+      resolution
       programId
+      expirationDate
     }
   }
 `
 
-export const Loading = () => <CustomLoading />
+export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>QualifiedRegistry not found</div>
 

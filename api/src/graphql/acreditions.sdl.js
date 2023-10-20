@@ -2,11 +2,12 @@ export const schema = gql`
   type Acredition {
     id: Int!
     name: String!
-    description: String!
     createdAt: DateTime!
+    resolution: String
     programId: Int
     program: ProgramOfStudy
     documents: [Document]!
+    expirationDate: DateTime
   }
 
   type Query {
@@ -16,14 +17,16 @@ export const schema = gql`
 
   input CreateAcreditionInput {
     name: String!
-    description: String!
+    resolution: String
     programId: Int
+    expirationDate: DateTime
   }
 
   input UpdateAcreditionInput {
     name: String
-    description: String
+    resolution: String
     programId: Int
+    expirationDate: DateTime
   }
 
   type Mutation {

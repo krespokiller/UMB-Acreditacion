@@ -5,8 +5,15 @@ import {
   Label,
   TextField,
   NumberField,
+  DatetimeLocalField,
   Submit,
 } from '@redwoodjs/forms'
+
+const formatDatetime = (value) => {
+  if (value) {
+    return value.replace(/:\d{2}\.\d{3}\w/, '')
+  }
+}
 
 const QualifiedRegistryForm = (props) => {
   const onSubmit = (data) => {
@@ -42,22 +49,21 @@ const QualifiedRegistryForm = (props) => {
         <FieldError name="name" className="rw-field-error" />
 
         <Label
-          name="description"
+          name="resolution"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Description
+          Resolution
         </Label>
 
         <TextField
-          name="description"
-          defaultValue={props.qualifiedRegistry?.description}
+          name="resolution"
+          defaultValue={props.qualifiedRegistry?.resolution}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
         />
 
-        <FieldError name="description" className="rw-field-error" />
+        <FieldError name="resolution" className="rw-field-error" />
 
         <Label
           name="programId"
@@ -76,6 +82,23 @@ const QualifiedRegistryForm = (props) => {
         />
 
         <FieldError name="programId" className="rw-field-error" />
+
+        <Label
+          name="expirationDate"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Expiration date
+        </Label>
+
+        <DatetimeLocalField
+          name="expirationDate"
+          defaultValue={formatDatetime(props.qualifiedRegistry?.expirationDate)}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="expirationDate" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

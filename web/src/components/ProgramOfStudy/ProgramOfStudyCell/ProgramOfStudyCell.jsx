@@ -1,11 +1,11 @@
 import CustomLoading from 'src/components/CustomLoading/CustomLoading'
 import ProgramOfStudy from 'src/components/ProgramOfStudy/ProgramOfStudy'
+
 export const QUERY = gql`
   query FindProgramOfStudyById($id: Int!) {
     programOfStudy: programOfStudy(id: $id) {
       id
       name
-      body
       image
       description
       active
@@ -14,10 +14,24 @@ export const QUERY = gql`
       createdAt
       headQuarterId
       classification
-      expirationYear
       docenciaServicio
       reaccreditationStatus
+      credits
+      sniesCode
+      coursesNumber
+      admissionPeriod
+      duration
+      spaceAvailable
       academicGroupId
+      academicGroup {
+        id
+        name
+        facultyId
+        faculty {
+          id
+          name
+        }
+      }
     }
   }
 `
