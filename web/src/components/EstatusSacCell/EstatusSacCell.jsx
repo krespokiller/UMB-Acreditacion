@@ -102,7 +102,6 @@ export const Success = ({ estatusSAC }) => {
 
       return currentCreatedAt > mostRecentCreatedAt ? current : mostRecent
     })
-    console.log(recent)
     return {
       nombre: name,
       Fecha: recent.createdAt,

@@ -55,17 +55,43 @@ const Header = () => {
 
         {isMenuOpen && (
           <div
-            className="fixed right-0 flex h-screen flex-col items-end bg-white px-4 md:hidden"
-            style={{ top: '37px', zIndex: '1' }}
+            className="fixed right-0 flex h-screen flex-col items-end bg-white px-4 pt-8 md:hidden"
+            style={{ top: '0', zIndex: '1' }}
           >
+            <div className="flex-end relative mb-4 mt-4 flex w-full">
+              {/* Botón de menu */}
+              <button
+                onClick={toggleMenu}
+                className="mr-4 text-gray-800 focus:outline-none md:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="h-6 w-6 stroke-red-500"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              </button>
+            </div>
             {/* Barra de búsqueda */}
-            <div className="relative mb-4 flex w-full">
+            <div className="relative mb-4 mt-4 flex w-full">
               <input
                 type="text"
                 placeholder="Buscar..."
                 className="rounded-md border border-gray-300 bg-white p-2 hover:border-red-500 focus:outline-none"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
+                onKeyDown={(event) => {
+                  //if is enter search
+                  if (event.keyCode === 13 && search) {
+                    navigate(routes.search({ letters: search }))
+                  }
+                }}
               />
               <button
                 className="absolute right-0 rounded-md p-2"
@@ -94,30 +120,13 @@ const Header = () => {
 
             {/* notification/logout box */}
 
-            <div className="mb-4 flex w-full justify-around">
-              <button
-                className="rounded-full p-2"
-                onClick={() => {
-                  alert('Notificaciones')
-                }}
-              >
-                {/* Icono de notificaciones */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  className="h-6 w-6 stroke-red-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                  />
-                </svg>
-              </button>
+            <div className="mb-4 flex w-full items-center justify-around">
+              <p className="text-center text-gray-400	">
+                {currentUser?.email || 'usuario@dominio.com'}
+              </p>
+
               <button className="rounded-full p-2" onClick={logOut}>
-                {/* Icono de cerrar sesión */}
+                {/* Icono de cerrar sesión e email */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -132,10 +141,6 @@ const Header = () => {
                   />
                 </svg>
               </button>
-            </div>
-            {/* email */}
-            <div className="w-full">
-              <p className="text-center text-gray-400	">usuario@dominio.com</p>
             </div>
           </div>
         )}
@@ -166,6 +171,12 @@ const Header = () => {
           className="w-full rounded-md border border-gray-300 bg-white p-2 hover:border-red-500 focus:outline-none md:w-96"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
+          onKeyDown={(event) => {
+            //if is enter search
+            if (event.keyCode === 13 && search) {
+              navigate(routes.search({ letters: search }))
+            }
+          }}
         />
         <button
           className="absolute right-0 rounded-md bg-white p-2"
@@ -199,27 +210,6 @@ const Header = () => {
           {currentUser?.email || 'usuario@dominio.com'}
         </p>
 
-        <button
-          className="mr-4 rounded-full p-2"
-          onClick={() => {
-            alert('Notificaciones')
-          }}
-        >
-          {/* Icono de notificaciones */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            className="h-6 w-6 stroke-red-500"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-            />
-          </svg>
-        </button>
         <button className="rounded-full p-2" onClick={logOut}>
           {/* Icono de cerrar sesión */}
           <svg

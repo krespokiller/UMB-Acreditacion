@@ -7,6 +7,34 @@ export const programOfStudies = () => {
 export const programOfStudy = ({ id }) => {
   return db.programOfStudy.findUnique({
     where: { id },
+    include: {
+      headQuarter: true,
+      acredition: {
+        include: {
+          documents: true,
+        },
+      },
+      qualifiedRegistry: {
+        include: {
+          documents: true,
+        },
+      },
+      academicGroup: {
+        include: {
+          faculty: true,
+        },
+      },
+      selfAssessment: {
+        include: {
+          documents: true,
+        },
+      },
+      programUpdate: {
+        include: {
+          documents: true,
+        },
+      },
+    },
   })
 }
 

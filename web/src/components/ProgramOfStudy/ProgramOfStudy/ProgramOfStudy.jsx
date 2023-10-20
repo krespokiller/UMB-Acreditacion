@@ -32,7 +32,7 @@ const ProgramOfStudy = ({ programOfStudy }) => {
 
   return (
     <>
-      <div className="rw-segment mb-4">
+      <div className="rw-segment mb-4 mt-8">
         <header className="rw-segment-header">
           <img
             src={programOfStudy.image}
@@ -123,7 +123,13 @@ const ProgramOfStudy = ({ programOfStudy }) => {
             <p className="rw-label mb-4 font-normal">
               {programOfStudy.description}
             </p>
-            <button type="button" className="rw-button rw-button-red w-48">
+            <button
+              type="button"
+              className="rw-button rw-button-red w-48"
+              onClick={() =>
+                navigate(routes.metadata({ id: programOfStudy.id }))
+              }
+            >
               Más información
             </button>
           </div>

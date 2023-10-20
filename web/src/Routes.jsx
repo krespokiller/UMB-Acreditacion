@@ -27,6 +27,7 @@ const Routes = () => {
           <Route path="/program/{id:Int}" page={ProgramPage} name="program" />
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
           <Route path="/search/{letters:String}" page={SearchPage} name="search" />
+          <Route path="/metadata/{id:Int}" page={MetadataPage} name="metadata" />
         </Set>
       </Private>
 

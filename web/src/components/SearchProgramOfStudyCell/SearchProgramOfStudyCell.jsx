@@ -59,7 +59,7 @@ export const Success = ({ searchProgramOfStudies }) => {
     navigate(routes.program({ id: programOfStudy.id }))
   }
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className="mt-8 grid grid-cols-1 gap-4">
       <div className="text-md mb-4 font-semibold lg:text-2xl">
         Resultados de la búsqueda
       </div>

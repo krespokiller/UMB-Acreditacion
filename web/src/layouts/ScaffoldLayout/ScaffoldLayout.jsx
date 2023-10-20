@@ -4,7 +4,7 @@ import { Toaster } from '@redwoodjs/web/toast'
 import Header from 'src/components/Header/Header'
 const ScaffoldLayout = ({ titleTo, children }) => {
   return (
-    <div className="rw-scaffold">
+    <div className="rw-scaffold  mt-4">
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <Header />
       <header className="rw-header">
