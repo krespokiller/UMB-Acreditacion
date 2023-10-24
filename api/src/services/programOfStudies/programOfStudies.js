@@ -1,7 +1,31 @@
 import { db } from 'src/lib/db'
 
 export const programOfStudies = () => {
-  return db.programOfStudy.findMany()
+  return db.programOfStudy.findMany({
+    include: {
+      headQuarter: true,
+      acredition: {
+        include: {
+          documents: true,
+        },
+      },
+      qualifiedRegistry: {
+        include: {
+          documents: true,
+        },
+      },
+      selfAssessment: {
+        include: {
+          documents: true,
+        },
+      },
+      programUpdate: {
+        include: {
+          documents: true,
+        },
+      },
+    },
+  })
 }
 
 export const programOfStudy = ({ id }) => {

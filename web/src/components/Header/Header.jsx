@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { navigate, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
@@ -30,6 +32,9 @@ const Header = () => {
           className="h-auto"
           style={{
             width: '200px',
+          }}
+          onClick={() => {
+            navigate(routes.dashboard())
           }}
         />
 
@@ -158,6 +163,9 @@ const Header = () => {
           className="mb-8 h-auto md:mb-0 "
           style={{
             width: '250px',
+          }}
+          onClick={() => {
+            navigate(routes.dashboard())
           }}
         />
       </div>
